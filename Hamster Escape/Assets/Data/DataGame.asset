@@ -32,17 +32,20 @@ MonoBehaviour:
   - level: 1
     distanceTrack: 30
     amountItem:
+    - {fileID: 8461524988876325835, guid: 3e77f4d65dbd83344a03929aa989b863, type: 3}
     - {fileID: 4449429067285335388, guid: 19f198ca3846aed44973470b72c45d84, type: 3}
     - {fileID: 8312761691166960539, guid: 4989a9cfe0f32f744988d1861518cb0b, type: 3}
   - level: 2
     distanceTrack: 50
     amountItem:
+    - {fileID: 8461524988876325835, guid: 3e77f4d65dbd83344a03929aa989b863, type: 3}
     - {fileID: 4449429067285335388, guid: 19f198ca3846aed44973470b72c45d84, type: 3}
     - {fileID: 4449429067285335388, guid: 19f198ca3846aed44973470b72c45d84, type: 3}
     - {fileID: 8312761691166960539, guid: 4989a9cfe0f32f744988d1861518cb0b, type: 3}
   - level: 3
     distanceTrack: 70
     amountItem:
+    - {fileID: 8461524988876325835, guid: 3e77f4d65dbd83344a03929aa989b863, type: 3}
     - {fileID: 4449429067285335388, guid: 19f198ca3846aed44973470b72c45d84, type: 3}
     - {fileID: 4449429067285335388, guid: 19f198ca3846aed44973470b72c45d84, type: 3}
     - {fileID: 4449429067285335388, guid: 19f198ca3846aed44973470b72c45d84, type: 3}
@@ -50,6 +53,7 @@ MonoBehaviour:
   - level: 4
     distanceTrack: 90
     amountItem:
+    - {fileID: 8461524988876325835, guid: 3e77f4d65dbd83344a03929aa989b863, type: 3}
     - {fileID: 4449429067285335388, guid: 19f198ca3846aed44973470b72c45d84, type: 3}
     - {fileID: 4449429067285335388, guid: 19f198ca3846aed44973470b72c45d84, type: 3}
     - {fileID: 4449429067285335388, guid: 19f198ca3846aed44973470b72c45d84, type: 3}
@@ -58,6 +62,7 @@ MonoBehaviour:
   - level: 5
     distanceTrack: 100
     amountItem:
+    - {fileID: 8461524988876325835, guid: 3e77f4d65dbd83344a03929aa989b863, type: 3}
     - {fileID: 4449429067285335388, guid: 19f198ca3846aed44973470b72c45d84, type: 3}
     - {fileID: 2257741732796863252, guid: 92902c2697c281546824ff39b381b4ed, type: 3}
     - {fileID: 4449429067285335388, guid: 19f198ca3846aed44973470b72c45d84, type: 3}

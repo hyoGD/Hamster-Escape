@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Anim : MonoBehaviour
 {
+    public static Anim instance;
     public Animator anim_Cat, anim_Shiba;
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,7 @@ public class Anim : MonoBehaviour
     public void CatIdle()
     {
         anim_Cat.SetBool("Moving", false);
+      
     }
 
     public void HIdeShiba()
