@@ -8,8 +8,8 @@ public class Icon : MonoBehaviour
     public type t_icon;
     private Image geometry;
     public Data data;
-    public bool opaque, normal = true,
-        isTrue;
+    public bool opaque, normal = true, isTrue;
+       
     // Start is called before the first frame update
     void Start()
     {

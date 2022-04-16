@@ -1,70 +1,151 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MovingPlayer : MonoBehaviour
-{  
-    public GameController gamecontroller;
+{
+    public static MovingPlayer instance;
     public Anim anim;
-    public bool isMoving, pause;
-    public float speed;
-    public int waypoinIndex;
+    [SerializeField] public bool isMoving, pause, die, caught;
+    [SerializeField] private Transform check;
+    [SerializeField] private LayerMask checkLayer;
+    [SerializeField] public float speed;
+    [SerializeField]  public int waypoinIndex;
+  
 
-    private void Start()
+
+    private void Awake()
     {
-        if (gamecontroller == null)
+        instance = this;
+    }
+    private void FixedUpdate()
+    {
+      
+        // die = Physics2D.OverlapCircle(check.position, 1f, checkLayer); 
+        Moving();
+
+       
+
+      
+        if (die)
         {
-            gamecontroller = GameObject.Find("GameController").GetComponent<GameController>();
+            Invoke("Die", 0.1f);
         }
 
-    }
-    private void Update()
-    {
-        Moving();
     }
 
     public void Moving()
     {
-        if (isMoving && !pause)
-        {      
-            if (waypoinIndex <= gamecontroller.targets.Count - 1)
+        #region xử lý khi đi đến 1 vật thể check điều kiện với ký tự bấm trước đó
+        if (isMoving && !pause && !die)
+        {
+           
+            if (waypoinIndex <= GameController.instance.targets.Count - 1)
             {
-                transform.position = Vector2.MoveTowards(transform.position, gamecontroller.targets[waypoinIndex+1].transform.position, speed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, GameController.instance.targets[waypoinIndex + 1].transform.position, speed * Time.deltaTime);
                 anim.CatMoving();
-                           
-                if (transform.position == gamecontroller.targets[waypoinIndex + 1].transform.position)
-                {                   
-                    if (gamecontroller.check_Chain[waypoinIndex])
-                    {
-                        pause = true;
-                        anim.CatIdle();
-                        StartCoroutine(See());
+              //  ShibaHide();
+                if (transform.position == GameController.instance.targets[waypoinIndex + 1].transform.position && waypoinIndex<= GameController.instance.check_Chain.Count-1)
+                {
 
-                        Debug.Log("dung dieu kien");
+                     
+                    if (GameController.instance.addOpaque[waypoinIndex])
+                    {
+                       
+                        if (GameController.instance.check_Chain[waypoinIndex])
+                        {
+                            anim.ShowShiba();
+                            Invoke("ShibaHide", 3f);
+                            pause = true;
+                            anim.CatIdle();
+                            Invoke("See", 5f);
+                           
+                            Debug.Log("dung dieu kien 1");
+                        }
+                        else
+                        {
+
+                            anim.ShowShiba();
+                            Invoke("ShibaHide", 3f);
+                            waypoinIndex += 1;
+                            Debug.Log("sai dieu kien 1");
+                           
+                        }
                     }
                     else
                     {
-                        waypoinIndex += 1;
-                        Debug.Log("sai dieu kien");
-                      
+                       
+                        if (GameController.instance.check_Chain[waypoinIndex])
+                        {
+
+                            waypoinIndex += 1;
+                            Debug.Log("dung dieu kien 2");
+                           
+                        }
+                        else
+                        {                        
+                            anim.CatIdle();
+                            //StartCoroutine(See());
+                            anim.ShowShiba();
+                           Invoke("CheckDie", 2);
+                            Invoke("ShibaHide", 3f);
+                            pause = true;
+                            Invoke("See", 5f);
+                           
+                            Debug.Log("sai dieu kien 2");
+                            
+                        }
                     }
                 }
-            
+                
+                if (transform.position == GameController.instance.targets[waypoinIndex + 1].transform.position && waypoinIndex == GameController.instance.check_Chain.Count )
+                {
+                    anim.CatIdle();
+                    ShibaHide();
+                    Debug.Log("Finish");                 
+                }
+                else
+                {
+                    die = Physics2D.OverlapCircle(check.position, 0.1f, checkLayer);
+                   
+                }
             }
+            else
+            {
+                return;
+            }
+           
         }
+        #endregion
     }
-    
 
-  public IEnumerator  See()
+
+    public void See()
     {
-        yield return new WaitForSeconds(5);
+      //  yield return new WaitForSeconds(5);
         if (pause)
         {
             waypoinIndex += 1;
             pause = false;
         }
-       
-        
+    }
+
+    public void ShibaHide()
+    {     
+            anim.HIdeShiba(); 
+    }
+    public void CheckDie()
+    {
+
+        die = true;
+      
+    }
+    void Die()
+    {
+        GameController.instance.Lose.SetActive(true);
+        pause = true;
+       // isMoving = false;
+        anim.CatIdle();
     }
 
 }

@@ -6,18 +6,11 @@ public class Anim : MonoBehaviour
     public static Anim instance;
     public Animator anim_Cat, anim_Shiba;
 
-    
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        instance = this;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  
     public void CatMoving()
     {
         anim_Cat.SetBool("Moving", true);
@@ -31,11 +24,13 @@ public class Anim : MonoBehaviour
     public void HIdeShiba()
     {
         anim_Shiba.SetBool("Hide", true);
-        anim_Shiba.SetBool("Check", false);
+        anim_Shiba.SetBool("Check",false);
+        Debug.Log("Shiba Hide");
     }
 
     public void ShowShiba()
     {
         anim_Shiba.SetBool("Check", true);
+        Debug.Log("Show Shiba");
     }
 }

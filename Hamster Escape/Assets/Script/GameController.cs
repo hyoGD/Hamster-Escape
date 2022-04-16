@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,69 +16,86 @@ public enum type
 
 public class GameController : MonoBehaviour
 {
+    public static GameController instance;
     [Header("Button")]
     [SerializeField] private Button[] buttonSwitch;
     [SerializeField] private Slider s_distance;
 
     [Header("UI")]
     [SerializeField] private GameObject Ui;
-    [SerializeField] private TextMeshProUGUI txtLevel;
+    [SerializeField]
+    private GameObject Win;
+    [SerializeField]
+    public GameObject Lose;
+
+   [SerializeField] private TextMeshProUGUI txtLevel;
     [SerializeField] private TextMeshProUGUI  txtLevelCurrent;
     [SerializeField] private TextMeshProUGUI txtLevelNext;
     
 
     [Header ("Scripts, Data")]
-    public Anim anim;
-    public Tutorial tutor;
-    public MovingPlayer place;
+    //[SerializeField] private Anim anim;
+    //private Anim spawnAnim;
+    [SerializeField] private Tutorial tutor;
+  //  private Tutorial spawnTutor;
+    //[SerializeField] MovingPlayer place;
+    //private MovingPlayer spawnPlace;
     public Data data;
 
     [Header ("Object va bien dem")]
     public int index;
     public type[] loaihinh;
-    private List<Transform> chainIconList = new List<Transform>();
+    private List<Icon> chainIconList = new List<Icon>();
     private List<type> addChain= new List<type>();
-    private List<bool> addOpaque=new List<bool>();
+    [SerializeField] public List<bool> addOpaque=new List<bool>();
     private List<GameObject> addItem = new List<GameObject>();
-    public List<bool> check_Chain;
-    public GameObject chainPrefab, ObjHidden;
+    [SerializeField] public List<bool> check_Chain;
+    [SerializeField] Icon chainPrefab;
+    private Icon s_Chain; //obj chua obj duoc khoi tao tu prefab
     public Transform c_tranform, hidd_tranform;
-    private GameObject s_Chain; //obj chua obj duoc khoi tao tu prefab
     public List<Transform> targets;
-    public Transform[] local;
+   // public Transform[] local;
     public Transform hamster;
-    public int topIndChain;
+    [SerializeField] int topIndChain;
     private float distance;
-    private int level;
-    private Vector3 disstanceStart;
    
+   
+
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-         Application.targetFrameRate = 60;
+        instance = this;
         #region search scripts
-        if (anim == null)
-        {
-            anim = GameObject.Find("SettingAnim").GetComponent<Anim>();
-        }
+        //if (anim == null)
+        //{
+        //    anim = GameObject.Find("SettingAnim").GetComponent<Anim>();
+        //}
         if (tutor == null)
         {
             tutor = GameObject.Find("Tutorial").GetComponent<Tutorial>();
         }
-        if (place == null)
-        {
-            place = GameObject.Find("Cat").GetComponent<MovingPlayer>();
-        }
+        //if (place == null)
+        //{
+        //    place = GameObject.Find("Cat").GetComponent<MovingPlayer>();
+        //}
+        //spawnAnim = Instantiate(anim);
+        //  spawnPlace = Instantiate(place);
+        // spawnTutor = Instantiate(tutor);
         #endregion
+        index = PlayerPrefs.GetInt("Index", 0);
 
+        SetUpGame();
+    }
+    void Start()
+    {
+       //  Application.targetFrameRate = 60;
+       
         for (int i = 0; i < buttonSwitch.Length; i++)
         {
             int ind = i;
             buttonSwitch[i].onClick.AddListener(() => Click(loaihinh[ind]));
         }
-        index = PlayerPrefs.GetInt("Index", 0);
-
-        SetUpGame();
+      
 
         #region tinh toan khoang cach tu diem start den diem cuoi(diem dich)
       //  targets[targets.Count - 1].transform.position += new Vector3(data.Items[index].distanceTrack, 0, 0);   //dat vi tri ve dich theo data
@@ -90,26 +107,6 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        distance = (targets[targets.Count - 1].transform.position -hamster.position).magnitude;
-        s_distance.value = distance;
-       
-        if (distance <= 3f)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-           
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            place.isMoving = true;
-        }
-        else if (Input.GetKeyUp(KeyCode.Space))
-        {
-            place.isMoving = false;
-        }
-    }
-    private void FixedUpdate()
-    {
         if (chainIconList.Count == 0)
         {
             for (int i = 0; i < buttonSwitch.Length; i++)
@@ -119,11 +116,27 @@ public class GameController : MonoBehaviour
                 buttonSwitch[i].interactable = false;
             }
             Invoke("SetUi", 0.5f);
-           // Invoke("CheckResult", 0.5f);
+         
+        }
+       
+
+    }
+    private void FixedUpdate()
+    {
+        distance = (targets[targets.Count - 1].transform.position - hamster.position).magnitude;
+        s_distance.value = distance;
+
+        if (distance <= 1f)
+        {
+            int lv = index;
+            lv++;
+            PlayerPrefs.SetInt("Index", lv);
+            Win.SetActive(true);
+            Time.timeScale = 0.2f;
         }
     }
 
-    void SetUpGame()
+   public void SetUpGame()
     {
         if (index == 0)
         {
@@ -134,9 +147,7 @@ public class GameController : MonoBehaviour
             }
         }
         #region tinh toan thong so trong Game bang voi du lieu trong data 
-        int lv = index;
-        lv++;
-        PlayerPrefs.SetInt("Index", lv);
+        
         if (index >= data.Items[data.Items.Count - 1].level - 1)
         {
             index = 0;
@@ -179,10 +190,10 @@ public class GameController : MonoBehaviour
         {
             s_Chain = Instantiate(chainPrefab, c_tranform); //khoi tao chuoi bang prefab Chain
             s_Chain.transform.SetParent(c_tranform);
-            chainIconList.Add(s_Chain.transform);   //add chuoi vua khoi tao vao list chainIconList de sau de su dung
+            chainIconList.Add(s_Chain);   //add chuoi vua khoi tao vao list chainIconList de sau de su dung
 
-            s_Chain.GetComponent<Icon>().t_icon = addChain[i]; //dat kieu type hien thi 
-            s_Chain.GetComponent<Icon>().opaque = addOpaque[i]; // dat color hien thi
+            s_Chain.t_icon = addChain[i]; //dat kieu type hien thi 
+            s_Chain.opaque = addOpaque[i]; // dat color hien thi
         }
         for (int i = 0; i < data.Items[index].amountItem.Length; i++)
         {
@@ -233,20 +244,20 @@ public class GameController : MonoBehaviour
             #endregion
 
             #region kiem tra xem type button co bang voi type cua chuoi ky tu hay ko */
-            if (chainIconList[0].GetComponent<Icon>().opaque)
+            if (chainIconList[0].opaque)
             {
                 
                 if (c_loaihinh == addChain[topIndChain])
                 {
-                    chainIconList[0].GetComponent<Icon>().isTrue = true; //luon luon la phan tu 0 trong list chain vi sau khi cick minh thuc hien xoa phan tu dau
+                    chainIconList[0].isTrue = true; //luon luon la phan tu 0 trong list chain vi sau khi cick minh thuc hien xoa phan tu dau
                     Debug.Log("Ban da chon dung");
-                    check_Chain.Add(chainIconList[0].GetComponent<Icon>().isTrue);
+                    check_Chain.Add(chainIconList[0].isTrue);
                 }
                 else
                 {
-                    chainIconList[0].GetComponent<Icon>().isTrue = false; //luon luon la phan tu 0 trong list chain vi sau khi cick minh thuc hien xoa phan tu dau
+                    chainIconList[0].isTrue = false; //luon luon la phan tu 0 trong list chain vi sau khi cick minh thuc hien xoa phan tu dau
                     Debug.Log("Ban da chon sai");
-                    check_Chain.Add(chainIconList[0].GetComponent<Icon>().isTrue);
+                    check_Chain.Add(chainIconList[0].isTrue);
                 }
             }
             else
@@ -254,18 +265,18 @@ public class GameController : MonoBehaviour
                 /* kiem tra xem type button co bang voi type cua chuoi ky tu hay ko */
                 if (c_loaihinh == addChain[topIndChain])
                 {
-                    chainIconList[0].GetComponent<Icon>().isTrue = false; //luon luon la phan tu 0 trong list chain vi sau khi cick minh thuc hien xoa phan tu dau
-                    check_Chain.Add(chainIconList[0].GetComponent<Icon>().isTrue);
+                    chainIconList[0].isTrue = false; //luon luon la phan tu 0 trong list chain vi sau khi cick minh thuc hien xoa phan tu dau
+                    check_Chain.Add(chainIconList[0].isTrue);
                     Debug.Log("Ban da chon sai");
                 }
                 else
                 {
-                    chainIconList[0].GetComponent<Icon>().isTrue = true; //luon luon la phan tu 0 trong list chain vi sau khi cick minh thuc hien xoa phan tu dau
+                    chainIconList[0].isTrue = true; //luon luon la phan tu 0 trong list chain vi sau khi cick minh thuc hien xoa phan tu dau
                     Debug.Log("Ban da chon dung");
-                   check_Chain.Add(chainIconList[0].GetComponent<Icon>().isTrue);
+                   check_Chain.Add(chainIconList[0].isTrue);
                 }
             }
-            chainIconList[0].GetComponent<Icon>().normal = false;
+            chainIconList[0].normal = false;
 
             topIndChain++;
             #endregion
@@ -280,11 +291,16 @@ public class GameController : MonoBehaviour
     {
         Ui.SetActive(false);
         tutor.SetTutorial();
-      //  anim.CatMoving();
-        anim.HIdeShiba();
-        place.isMoving = true;
-
+        //  anim.CatMoving();
+        // Anim.instance.HIdeShiba();
+        MovingPlayer.instance.isMoving = true;
     }
 
-   
+    public void Finish()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1;
+    }
+
+ 
 }

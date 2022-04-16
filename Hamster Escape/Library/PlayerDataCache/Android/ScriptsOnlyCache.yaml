@@ -2,10 +2,11 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - Anim
+    - Camfollow
     - Data
     - GameController
     - Icon
-    - Laser
+    - Loading
     - MovingPlayer
     - Tutorial
     Unity.2D.Animation.Editor.dll:
@@ -35,8 +36,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -56,7 +59,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Text
     - UnityEngine.UI.VerticalLayoutGroup
   sceneClasses:
-    Assets/Scenes/SampleScene.unity:
+    Assets/Scenes/Loading.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -71,7 +74,66 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 49
       Script: {instanceID: 0}
-    - Class: 61
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1518}
+    - Class: 114
+      Script: {instanceID: 2212}
+    - Class: 114
+      Script: {instanceID: 2708}
+    - Class: 114
+      Script: {instanceID: 2944}
+    - Class: 114
+      Script: {instanceID: 3256}
+    - Class: 114
+      Script: {instanceID: 4332}
+    - Class: 114
+      Script: {instanceID: 4454}
+    - Class: 114
+      Script: {instanceID: 4764}
+    - Class: 114
+      Script: {instanceID: 5600}
+    - Class: 114
+      Script: {instanceID: 5910}
+    - Class: 114
+      Script: {instanceID: 6258}
+    - Class: 114
+      Script: {instanceID: 6822}
+    - Class: 114
+      Script: {instanceID: 35644}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/Play.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 60
       Script: {instanceID: 0}
     - Class: 74
       Script: {instanceID: 0}
@@ -88,54 +150,44 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1690}
     - Class: 114
-      Script: {instanceID: 2212}
-    - Class: 114
       Script: {instanceID: 2708}
     - Class: 114
       Script: {instanceID: 2944}
+    - Class: 114
+      Script: {instanceID: 3026}
     - Class: 114
       Script: {instanceID: 3256}
     - Class: 114
       Script: {instanceID: 3458}
     - Class: 114
-      Script: {instanceID: 4166}
+      Script: {instanceID: 4168}
     - Class: 114
-      Script: {instanceID: 4330}
+      Script: {instanceID: 5502}
     - Class: 114
-      Script: {instanceID: 4452}
+      Script: {instanceID: 5514}
     - Class: 114
-      Script: {instanceID: 4762}
+      Script: {instanceID: 5600}
     - Class: 114
-      Script: {instanceID: 5500}
+      Script: {instanceID: 5656}
     - Class: 114
-      Script: {instanceID: 5512}
+      Script: {instanceID: 5910}
     - Class: 114
-      Script: {instanceID: 5598}
+      Script: {instanceID: 6258}
     - Class: 114
-      Script: {instanceID: 5612}
+      Script: {instanceID: 6448}
     - Class: 114
-      Script: {instanceID: 5654}
+      Script: {instanceID: 6712}
     - Class: 114
-      Script: {instanceID: 5908}
+      Script: {instanceID: 6822}
     - Class: 114
-      Script: {instanceID: 6256}
+      Script: {instanceID: 7314}
     - Class: 114
-      Script: {instanceID: 6446}
+      Script: {instanceID: 7406}
     - Class: 114
-      Script: {instanceID: 6710}
+      Script: {instanceID: 8378}
     - Class: 114
-      Script: {instanceID: 6820}
-    - Class: 114
-      Script: {instanceID: 7312}
-    - Class: 114
-      Script: {instanceID: 7404}
-    - Class: 114
-      Script: {instanceID: 8376}
-    - Class: 114
-      Script: {instanceID: 8832}
+      Script: {instanceID: 8834}
     - Class: 115
-      Script: {instanceID: 0}
-    - Class: 120
       Script: {instanceID: 0}
     - Class: 128
       Script: {instanceID: 0}
@@ -152,6 +204,8 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    - Class: 331
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -534,6 +588,12 @@ ScriptsOnlyBuild:
     className: TextMeshPro
   - hash:
       serializedVersion: 2
+      Hash: 25c391c825ebcd0d3d9622edd606cb84
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: gizmod
+  - hash:
+      serializedVersion: 2
       Hash: bd3cf68c8964d3c66d1c43f4f98508c9
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -858,7 +918,7 @@ ScriptsOnlyBuild:
     className: Laser
   - hash:
       serializedVersion: 2
-      Hash: 878f072df1d4269c3f9df514e7a00c6b
+      Hash: 7eac12366d141324df1bfd6b45f498e3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Data
@@ -954,7 +1014,7 @@ ScriptsOnlyBuild:
     className: Benchmark03
   - hash:
       serializedVersion: 2
-      Hash: b2926a59d9bbc87b4605665903f183fb
+      Hash: 851904bce306b7fdf5c55c9a19adc742
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MovingPlayer
@@ -1062,7 +1122,7 @@ ScriptsOnlyBuild:
     className: RuleTile
   - hash:
       serializedVersion: 2
-      Hash: a5cc18773ed93d9ba13aa28ffa1913a1
+      Hash: 3ac2822601c6e1c8eee76caa6ab9006f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Icon
@@ -1218,7 +1278,7 @@ ScriptsOnlyBuild:
     className: UnityOnMouseOverMessageListener
   - hash:
       serializedVersion: 2
-      Hash: ae29f61721f159ed5bf1ce28b8f7a313
+      Hash: 06315c56df069415f92c792152cefdd4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Tutorial
@@ -1290,7 +1350,7 @@ ScriptsOnlyBuild:
     className: SignalEmitter
   - hash:
       serializedVersion: 2
-      Hash: b3f42ca34d74895ed0dbe600ff86c2c0
+      Hash: 126a7fb2b4fc1ab24af546c93f9af7af
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameController
@@ -1330,7 +1390,14 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 24f5e617e11a6231c08b39c01c7751a0
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Loading
   platform: 13
   scenePathNames:
-  - Assets/Scenes/SampleScene.unity
-  playerPath: D:/Unity_Build/Androi/HamterEscape2.apk
+  - Assets/Scenes/Loading.unity
+  - Assets/Scenes/Play.unity
+  playerPath: D:/Unity_Build/Androi/HamterEscape5.apk

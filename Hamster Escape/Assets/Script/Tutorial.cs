@@ -5,6 +5,7 @@ using UnityEngine;
 public class Tutorial : MonoBehaviour
 {
     public bool fistPlay = false;
+    public GameObject txtTutorial;
 
     private void Start()
     {
@@ -12,10 +13,12 @@ public class Tutorial : MonoBehaviour
         if (!fistPlay)
         {
             gameObject.SetActive(true);
+            txtTutorial.SetActive(true);
         }
         else
         {
             gameObject.SetActive(false);
+            txtTutorial.SetActive(false);
         }
        
     }

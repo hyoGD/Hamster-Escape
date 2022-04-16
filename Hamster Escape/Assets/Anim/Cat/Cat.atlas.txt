@@ -1,0 +1,167 @@
+
+Cat.png
+size: 4096,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+B-L
+  rotate: false
+  xy: 888, 52
+  size: 211, 76
+  orig: 211, 76
+  offset: 0, 0
+  index: -1
+B-R
+  rotate: false
+  xy: 1798, 710
+  size: 211, 76
+  orig: 211, 76
+  offset: 0, 0
+  index: -1
+B2-L
+  rotate: false
+  xy: 888, 27
+  size: 247, 23
+  orig: 247, 23
+  offset: 0, 0
+  index: -1
+B2-R
+  rotate: false
+  xy: 888, 2
+  size: 247, 23
+  orig: 247, 23
+  offset: 0, 0
+  index: -1
+Collar
+  rotate: false
+  xy: 1798, 788
+  size: 1006, 182
+  orig: 1006, 182
+  offset: 0, 0
+  index: -1
+Ear-L
+  rotate: false
+  xy: 2306, 464
+  size: 373, 322
+  orig: 373, 322
+  offset: 0, 0
+  index: -1
+Ear-R
+  rotate: true
+  xy: 2322, 89
+  size: 373, 322
+  orig: 373, 322
+  offset: 0, 0
+  index: -1
+Eyes-Detected
+  rotate: false
+  xy: 943, 639
+  size: 853, 331
+  orig: 853, 331
+  offset: 0, 0
+  index: -1
+Eyes-Doubt
+  rotate: false
+  xy: 2, 22
+  size: 884, 106
+  orig: 884, 106
+  offset: 0, 0
+  index: -1
+Eyes-Idle
+  rotate: false
+  xy: 2021, 1149
+  size: 862, 175
+  orig: 862, 175
+  offset: 0, 0
+  index: -1
+Eyes-Not Detected
+  rotate: false
+  xy: 2021, 973
+  size: 860, 174
+  orig: 860, 174
+  offset: 0, 0
+  index: -1
+Fx-Detected
+  rotate: true
+  xy: 1137, 15
+  size: 241, 405
+  orig: 241, 405
+  offset: 0, 0
+  index: -1
+Fx-NotDetected
+  rotate: false
+  xy: 1966, 6
+  size: 354, 417
+  orig: 354, 417
+  offset: 0, 0
+  index: -1
+Head
+  rotate: true
+  xy: 2, 603
+  size: 1442, 939
+  orig: 1442, 939
+  offset: 0, 0
+  index: -1
+Mouth-Detected
+  rotate: false
+  xy: 2, 130
+  size: 1076, 471
+  orig: 1076, 471
+  offset: 0, 0
+  index: -1
+Mouth-Idle
+  rotate: false
+  xy: 943, 972
+  size: 1076, 352
+  orig: 1076, 352
+  offset: 0, 0
+  index: -1
+Mouth-NotDetected
+  rotate: false
+  xy: 1080, 258
+  size: 884, 165
+  orig: 884, 165
+  offset: 0, 0
+  index: -1
+Nose
+  rotate: true
+  xy: 2018, 650
+  size: 136, 115
+  orig: 136, 115
+  offset: 0, 0
+  index: -1
+Paw-Detected
+  rotate: false
+  xy: 943, 1326
+  size: 1756, 719
+  orig: 1756, 719
+  offset: 0, 0
+  index: -1
+Paw-Idle
+  rotate: false
+  xy: 1080, 425
+  size: 1224, 212
+  orig: 1224, 212
+  offset: 0, 0
+  index: -1
+Pupil-L
+  rotate: true
+  xy: 1798, 664
+  size: 44, 108
+  orig: 44, 108
+  offset: 0, 0
+  index: -1
+Pupil-R
+  rotate: true
+  xy: 1908, 664
+  size: 44, 108
+  orig: 44, 108
+  offset: 0, 0
+  index: -1
+Tail
+  rotate: true
+  xy: 2701, 1406
+  size: 639, 542
+  orig: 639, 542
+  offset: 0, 0
+  index: -1
