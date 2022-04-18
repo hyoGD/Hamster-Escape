@@ -126,13 +126,15 @@ public class GameController : MonoBehaviour
         distance = (targets[targets.Count - 1].transform.position - hamster.position).magnitude;
         s_distance.value = distance;
 
-        if (distance <= 1f)
+        if (distance < 0.1f)
         {
             int lv = index;
             lv++;
             PlayerPrefs.SetInt("Index", lv);
             Win.SetActive(true);
-            Time.timeScale = 0.2f;
+           
+          
+           
         }
     }
 
@@ -148,24 +150,25 @@ public class GameController : MonoBehaviour
         }
         #region tinh toan thong so trong Game bang voi du lieu trong data 
         
-        if (index >= data.Items[data.Items.Count - 1].level - 1)
+        if (index >= data.question[data.question.Count - 1].ChainIcon )
         {
-            index = 0;
-            index = data.Items[data.Items.Count - 1].level - 1;
+          //  index = 0;
+            index = data.question[data.question.Count - 1].ChainIcon ;
             PlayerPrefs.SetInt("Index", index);
-            txtLevelCurrent.text = "0" + data.Items[data.Items.Count - 1].level.ToString();
-            txtLevelNext.text = "0" + data.Items[data.Items.Count - 1].level.ToString();
+            var nextindex = index + 1;
+            txtLevelCurrent.text = "0" + nextindex.ToString();
+            txtLevelNext.text = "0" + nextindex.ToString();
             // s_distance.maxValue =data.Items[data.Items.Count - 1].distanceTrack;
             Debug.Log("index da max");
 
         }
-        else if (index < data.Items[data.Items.Count - 1].level - 1)
+        else if (index < data.question[data.question.Count - 1].ChainIcon )
         {
-            txtLevelCurrent.text = "0" + data.Items[index].level.ToString();
+            txtLevelCurrent.text = "0" + data.question[index].ChainIcon.ToString();
 
-            txtLevelNext.text = "0" + data.Items[index].level.ToString();
+            txtLevelNext.text = "0" + data.question[index].ChainIcon.ToString();
 
-            txtLevelNext.text = "0" + data.Items[index + 1].level.ToString();
+            txtLevelNext.text = "0" + data.question[index + 1].ChainIcon.ToString();
             Debug.Log("index chua max");
 
             // s_distance.maxValue = data.Items[index].distanceTrack;

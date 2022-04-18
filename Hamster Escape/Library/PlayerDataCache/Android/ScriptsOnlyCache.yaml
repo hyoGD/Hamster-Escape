@@ -36,10 +36,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -79,31 +77,31 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1518}
+      Script: {instanceID: 1602}
     - Class: 114
-      Script: {instanceID: 2212}
+      Script: {instanceID: 2296}
     - Class: 114
-      Script: {instanceID: 2708}
+      Script: {instanceID: 2792}
     - Class: 114
-      Script: {instanceID: 2944}
+      Script: {instanceID: 3028}
     - Class: 114
-      Script: {instanceID: 3256}
+      Script: {instanceID: 3340}
     - Class: 114
-      Script: {instanceID: 4332}
+      Script: {instanceID: 4416}
     - Class: 114
-      Script: {instanceID: 4454}
+      Script: {instanceID: 4538}
     - Class: 114
-      Script: {instanceID: 4764}
+      Script: {instanceID: 4848}
     - Class: 114
-      Script: {instanceID: 5600}
+      Script: {instanceID: 5684}
     - Class: 114
-      Script: {instanceID: 5910}
+      Script: {instanceID: 5994}
     - Class: 114
-      Script: {instanceID: 6258}
+      Script: {instanceID: 6342}
     - Class: 114
-      Script: {instanceID: 6822}
+      Script: {instanceID: 6906}
     - Class: 114
-      Script: {instanceID: 35644}
+      Script: {instanceID: 7152}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -146,47 +144,47 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1518}
+      Script: {instanceID: 1602}
     - Class: 114
-      Script: {instanceID: 1690}
+      Script: {instanceID: 1774}
     - Class: 114
-      Script: {instanceID: 2708}
+      Script: {instanceID: 2792}
     - Class: 114
-      Script: {instanceID: 2944}
+      Script: {instanceID: 3028}
     - Class: 114
-      Script: {instanceID: 3026}
+      Script: {instanceID: 3110}
     - Class: 114
-      Script: {instanceID: 3256}
+      Script: {instanceID: 3340}
     - Class: 114
-      Script: {instanceID: 3458}
+      Script: {instanceID: 3542}
     - Class: 114
-      Script: {instanceID: 4168}
+      Script: {instanceID: 4252}
     - Class: 114
-      Script: {instanceID: 5502}
+      Script: {instanceID: 5586}
     - Class: 114
-      Script: {instanceID: 5514}
+      Script: {instanceID: 5598}
     - Class: 114
-      Script: {instanceID: 5600}
+      Script: {instanceID: 5684}
     - Class: 114
-      Script: {instanceID: 5656}
+      Script: {instanceID: 5740}
     - Class: 114
-      Script: {instanceID: 5910}
+      Script: {instanceID: 5994}
     - Class: 114
-      Script: {instanceID: 6258}
+      Script: {instanceID: 6342}
     - Class: 114
-      Script: {instanceID: 6448}
+      Script: {instanceID: 6532}
     - Class: 114
-      Script: {instanceID: 6712}
+      Script: {instanceID: 6796}
     - Class: 114
-      Script: {instanceID: 6822}
+      Script: {instanceID: 6906}
     - Class: 114
-      Script: {instanceID: 7314}
+      Script: {instanceID: 7400}
     - Class: 114
-      Script: {instanceID: 7406}
+      Script: {instanceID: 7492}
     - Class: 114
-      Script: {instanceID: 8378}
+      Script: {instanceID: 8464}
     - Class: 114
-      Script: {instanceID: 8834}
+      Script: {instanceID: 8920}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -918,7 +916,7 @@ ScriptsOnlyBuild:
     className: Laser
   - hash:
       serializedVersion: 2
-      Hash: 7eac12366d141324df1bfd6b45f498e3
+      Hash: 7aaddd3c8efc48c11311f706b7137b5b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Data
@@ -1066,6 +1064,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TextContainer
+  - hash:
+      serializedVersion: 2
+      Hash: 24f5e617e11a6231c08b39c01c7751a0
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Loading
   - hash:
       serializedVersion: 2
       Hash: bd3f0ca738703903e759f77536ed74fd
@@ -1390,14 +1394,8 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 24f5e617e11a6231c08b39c01c7751a0
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Loading
   platform: 13
   scenePathNames:
   - Assets/Scenes/Loading.unity
   - Assets/Scenes/Play.unity
-  playerPath: D:/Unity_Build/Androi/HamterEscape5.apk
+  playerPath: D:/Unity_Build/Androi/HamterEscape6.apk
