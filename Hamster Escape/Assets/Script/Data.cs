@@ -8,9 +8,9 @@ public class Data : ScriptableObject
 {
     public List<Questions> question= new List<Questions>();
     public List<Item> Items = new List<Item>();
-
+    public List<GameObject> itemDeco;
     [Header("Sprite Chuoi bieu tuong")]
     public Sprite[] chain_Normal;
-    public Sprite[] chain_True;
-    public Sprite[] chain_Faild;
+    public Sprite[] ChainColor;
+ 
 }

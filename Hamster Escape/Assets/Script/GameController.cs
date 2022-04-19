@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Linq;
-using System;
 using UnityEngine.SceneManagement;
 
 public enum type
@@ -27,19 +25,14 @@ public class GameController : MonoBehaviour
     private GameObject Win;
     [SerializeField]
     public GameObject Lose;
-
-   [SerializeField] private TextMeshProUGUI txtLevel;
+    [SerializeField] private TextMeshProUGUI txtLevel;
     [SerializeField] private TextMeshProUGUI  txtLevelCurrent;
     [SerializeField] private TextMeshProUGUI txtLevelNext;
     
 
     [Header ("Scripts, Data")]
-    //[SerializeField] private Anim anim;
-    //private Anim spawnAnim;
-    [SerializeField] private Tutorial tutor;
-  //  private Tutorial spawnTutor;
-    //[SerializeField] MovingPlayer place;
-    //private MovingPlayer spawnPlace;
+   
+    [SerializeField] private Tutorial tutor; 
     public Data data;
 
     [Header ("Object va bien dem")]
@@ -48,14 +41,12 @@ public class GameController : MonoBehaviour
     private List<Icon> chainIconList = new List<Icon>();
     private List<type> addChain= new List<type>();
     [SerializeField] public List<bool> addOpaque=new List<bool>();
-    private List<GameObject> addItem = new List<GameObject>();
+    [SerializeField] public List<GameObject> addItem = new List<GameObject>();
     [SerializeField] public List<bool> check_Chain;
     [SerializeField] Icon chainPrefab;
     private Icon s_Chain; //obj chua obj duoc khoi tao tu prefab
     public Transform c_tranform, hidd_tranform;
-    public List<Transform> targets;
-   // public Transform[] local;
-    public Transform hamster;
+    public List<Transform> targets;  
     [SerializeField] int topIndChain;
     private float distance;
    
@@ -99,7 +90,7 @@ public class GameController : MonoBehaviour
 
         #region tinh toan khoang cach tu diem start den diem cuoi(diem dich)
       //  targets[targets.Count - 1].transform.position += new Vector3(data.Items[index].distanceTrack, 0, 0);   //dat vi tri ve dich theo data
-        distance = (targets[targets.Count - 1].transform.position -hamster.position).magnitude; //koang cach tu vi tri dau den vi tri ve dich(vi tri cuoi cug)
+        distance = (targets[targets.Count - 1].transform.position -MovingPlayer.instance.transform.position).magnitude; //koang cach tu vi tri dau den vi tri ve dich(vi tri cuoi cug)
         s_distance.maxValue = distance;
         #endregion
     }
@@ -107,6 +98,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Application.targetFrameRate = 60;
         if (chainIconList.Count == 0)
         {
             for (int i = 0; i < buttonSwitch.Length; i++)
@@ -123,7 +115,7 @@ public class GameController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        distance = (targets[targets.Count - 1].transform.position - hamster.position).magnitude;
+        distance = (targets[targets.Count - 1].transform.position - MovingPlayer.instance.transform.position).magnitude;
         s_distance.value = distance;
 
         if (distance < 0.1f)
@@ -132,10 +124,7 @@ public class GameController : MonoBehaviour
             lv++;
             PlayerPrefs.SetInt("Index", lv);
             Win.SetActive(true);
-           
-          
-           
-        }
+       }
     }
 
    public void SetUpGame()
@@ -149,27 +138,28 @@ public class GameController : MonoBehaviour
             }
         }
         #region tinh toan thong so trong Game bang voi du lieu trong data 
-        
-        if (index >= data.question[data.question.Count - 1].ChainIcon )
+
+        if (index >= data.Items[data.Items.Count - 1].level - 1)
         {
-          //  index = 0;
-            index = data.question[data.question.Count - 1].ChainIcon ;
+            //index = 0;
+            index = data.Items[data.Items.Count - 1].level - 1;
+           
             PlayerPrefs.SetInt("Index", index);
-            var nextindex = index + 1;
-            txtLevelCurrent.text = "0" + nextindex.ToString();
-            txtLevelNext.text = "0" + nextindex.ToString();
-            // s_distance.maxValue =data.Items[data.Items.Count - 1].distanceTrack;
+            txtLevelCurrent.text = "0" + data.Items[data.Items.Count - 1].level.ToString();
+            txtLevelNext.text = "0" + data.Items[data.Items.Count - 1].level.ToString();
             Debug.Log("index da max");
-
         }
-        else if (index < data.question[data.question.Count - 1].ChainIcon )
+        else if (index < data.Items[data.Items.Count - 1].level - 1)
         {
-            txtLevelCurrent.text = "0" + data.question[index].ChainIcon.ToString();
+            txtLevelCurrent.text = "0" + data.Items[index].level.ToString();
 
-            txtLevelNext.text = "0" + data.question[index].ChainIcon.ToString();
+           
 
-            txtLevelNext.text = "0" + data.question[index + 1].ChainIcon.ToString();
+            txtLevelNext.text = "0" + data.Items[index + 1].level.ToString();
+           
             Debug.Log("index chua max");
+
+            // s_distance.maxValue = data.Items[index].distanceTrack;
 
             // s_distance.maxValue = data.Items[index].distanceTrack;
 
@@ -204,24 +194,21 @@ public class GameController : MonoBehaviour
 
             if (i == 0 /*&& i== data.Items[index].amountItem.Length-1*/)
             {
-                GameObject test = Instantiate(addItem[i], new Vector2(i, 1), Quaternion.identity);
+                GameObject test = Instantiate(addItem[i], new Vector2(i, 3), Quaternion.identity);
                 test.transform.SetParent(hidd_tranform.transform);
                 targets.Add(test.transform.GetChild(0).transform);
             }
             else /*if(i > 0 && i < data.Items[index].amountItem.Length-1)*/
             {
-                GameObject test = Instantiate(addItem[i], new Vector2(i * 10f, 0.5f), Quaternion.identity);
+                GameObject test = Instantiate(addItem[i], new Vector2(i * 10f, 2f), Quaternion.identity);
                 test.transform.SetParent(hidd_tranform.transform);
                 targets.Add(test.transform.GetChild(0).transform);
-            }
-
-            //else if (i == data.Items[index].amountItem.Length - 1)
-            //{
-            //    GameObject test = Instantiate(addItem[i], new Vector2(i * 20f, 1), Quaternion.identity);
-            //    test.transform.SetParent(hidd_tranform.transform);
-            //    targets.Add(test.transform.GetChild(0).transform);
-            //}
-           
+            }   
+        }
+        //deco item
+        for(int i=0; i<= data.itemDeco.Count-1; i++)
+        {
+            GameObject itemDeco = Instantiate(data.itemDeco[i], new Vector2(i + Random.Range(5f, 50f), Random.Range(0.5f, 5f)), Quaternion.identity);
         }
     
     }

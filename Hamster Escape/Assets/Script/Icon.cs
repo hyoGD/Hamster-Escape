@@ -6,14 +6,16 @@ using UnityEngine.UI;
 public class Icon : MonoBehaviour
 {
     public type t_icon;
-    private Image geometry;
+    public Image parent, geometry;
     public Data data;
+    public RectTransform rect;
     public bool opaque, normal = true, isTrue;
        
     // Start is called before the first frame update
     void Start()
     {
-        geometry = GetComponent<Image>();
+        parent = GetComponent<Image>();
+        geometry = transform.GetChild(0).GetComponent<Image>();
         if (normal)
         {
             setIcon(t_icon);
@@ -39,104 +41,36 @@ public class Icon : MonoBehaviour
     {
         if (opaque)
         {
+            parent.sprite = data.ChainColor[0];
+        }
+        else
+        {
+            parent.sprite = data.ChainColor[1];
+        }
             switch (t)
             {
                 case type.tron:
                     geometry.sprite = data.chain_Normal[0];
-
+                rect.sizeDelta = new Vector2(68, 68);              
                     break;
                 case type.tamgiac:
                     geometry.sprite = data.chain_Normal[1];
-
-                    break;
+                rect.sizeDelta = new Vector2(66, 59);
+                break;
                 case type.vuong:
                     geometry.sprite = data.chain_Normal[2];
-
-                    break;
+                rect.sizeDelta = new Vector2(59, 58);
+                break;
             }
-        }
-        else
-        {
-            switch (t)
-            {
-                case type.tron:
-                    geometry.sprite = data.chain_Normal[3];
-                    break;
-                case type.tamgiac:
-                    geometry.sprite = data.chain_Normal[4];
-                    break;
-                case type.vuong:
-                    geometry.sprite = data.chain_Normal[5];
-                    break;
-
-            }
-
-        }
+        
+       
     }
     public void setIconTrue(type t)
     {
-        if (opaque)
-        {
-            switch (t)
-            {
-                case type.tron:
-                    geometry.sprite = data.chain_True[0];
-                    break;
-                case type.tamgiac:
-                    geometry.sprite = data.chain_True[1];
-                    break;
-                case type.vuong:
-                    geometry.sprite = data.chain_True[2];
-                    break;
-            }
-        }
-        else
-        {
-            switch (t)
-            {
-                case type.tron:
-                    geometry.sprite = data.chain_True[0];
-                    break;
-                case type.tamgiac:
-                    geometry.sprite = data.chain_True[1];
-                    break;
-                case type.vuong:
-                    geometry.sprite = data.chain_True[2];
-                    break;
-            }
-        }
+        parent.sprite = data.ChainColor[2];
     }
     public void setIconFaild(type t)
     {
-        if (opaque)
-        {
-            switch (t)
-            {
-                case type.tron:
-                    geometry.sprite = data.chain_Faild[0];
-                    break;
-                case type.tamgiac:
-                    geometry.sprite = data.chain_Faild[1];
-                    break;
-                case type.vuong:
-                    geometry.sprite = data.chain_Faild[2];
-                    break;
-            }
-        }
-        else
-        {
-            switch (t)
-            {
-                case type.tron:
-                    geometry.sprite = data.chain_Faild[0];
-                    break;
-                case type.tamgiac:
-                    geometry.sprite = data.chain_Faild[1];
-                    break;
-                case type.vuong:
-                    geometry.sprite = data.chain_Faild[2];
-                    break;
-            }
-        }
+        parent.sprite = data.ChainColor[3];
     }
 }

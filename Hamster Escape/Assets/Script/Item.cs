@@ -6,5 +6,6 @@ public class Item
     public int level;
     public float distanceTrack;
     public GameObject[] amountItem;
+    
 
 }
