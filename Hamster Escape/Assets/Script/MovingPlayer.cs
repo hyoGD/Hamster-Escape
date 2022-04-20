@@ -26,8 +26,6 @@ public class MovingPlayer : MonoBehaviour
     private void Update()
     {
         Application.targetFrameRate = 60;
-
-
     }
     private void FixedUpdate()
     {
@@ -62,11 +60,11 @@ public class MovingPlayer : MonoBehaviour
             {
                 hamster.PlayAnimHamster(1);
                 transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
-                if (transform.position == target && waypoinIndex <= gamecontroller.check_Chain.Count - 1)
+                if (transform.position == target && waypoinIndex <= gamecontroller.check_Chain.Count-1)
                 {
                     CheckGamePlay(gamecontroller, hamster, cat);
                 }
-                if (transform.position == target && waypoinIndex == gamecontroller.check_Chain.Count)
+                if (transform.position == gamecontroller.targets[gamecontroller.targets.Count-1].transform.position)
                 {
                     win = true;
                     rb.AddForce(transform.right * 50f);
@@ -104,11 +102,8 @@ public class MovingPlayer : MonoBehaviour
                 Invoke("IsDoubt", 1f);
                 hamster.PlayAnimHamster(0);
                 Invoke("ShibaHide", 3f);
-
                 pause = true;
-
                 Invoke("See", 5f);
-
                 Debug.Log("dung dieu kien 1");
             }
             else
@@ -129,7 +124,6 @@ public class MovingPlayer : MonoBehaviour
             {
                 // cat.PlayAnimCat(4);
                 waypoinIndex += 1;
-                // cat.PlayAnimCat(4);
                 Debug.Log("dung dieu kien 2");
 
             }
@@ -138,12 +132,9 @@ public class MovingPlayer : MonoBehaviour
                 cat.PlayAnimCat(4);
                 Invoke("IsDoubt", 0.5f);
                 hamster.PlayAnimHamster(0);
-                //StartCoroutine(See());
-                // anim.ShowShiba();
                 Invoke("CheckDie", 2f);
                 Invoke("ShibaHide", 2f);
                 pause = true;
-                // Invoke("See", 5f);
                 Debug.Log("sai dieu kien 2");
 
             }
