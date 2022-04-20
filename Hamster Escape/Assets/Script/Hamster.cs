@@ -5,9 +5,9 @@ using Spine;
 using Spine.Unity;
 public class Hamster : MonoBehaviour
 {  
-    [SerializeField] SkeletonAnimation hamster;   
+    [SerializeField] public SkeletonAnimation hamster;   
     [SpineAnimation] [SerializeField] public string[] animAction = new string[5];
-    [SerializeField] int n;
+   
     public static Hamster instance;
     private void Awake()
     {
@@ -33,7 +33,7 @@ public class Hamster : MonoBehaviour
         
             switch (num)
             {
-                case 3:
+                case 2:
                     PlayAninmationHamster(hamster, animAction[num], false);
                     break;
             //case 4:

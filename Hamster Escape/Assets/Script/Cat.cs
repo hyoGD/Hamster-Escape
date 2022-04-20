@@ -12,7 +12,7 @@ public class Cat : MonoBehaviour
     public SkeletonAnimation cat;
     [SpineAnimation] public List<string> catAnimation;
    
-    [SerializeField] int n;
+   
     private void Awake()
     {
         {

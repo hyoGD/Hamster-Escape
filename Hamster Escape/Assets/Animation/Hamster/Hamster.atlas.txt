@@ -5,22 +5,22 @@ format: RGBA8888
 filter: Linear,Linear
 repeat: none
 Arm-B
-  rotate: true
-  xy: 550, 121
+  rotate: false
+  xy: 370, 6
   size: 98, 64
   orig: 98, 64
   offset: 0, 0
   index: -1
 Arm-F
-  rotate: true
-  xy: 597, 27
+  rotate: false
+  xy: 600, 84
   size: 92, 88
   orig: 92, 88
   offset: 0, 0
   index: -1
 B
   rotate: true
-  xy: 135, 4
+  xy: 324, 7
   size: 19, 16
   orig: 19, 16
   offset: 0, 0
@@ -32,6 +32,13 @@ Base
   orig: 264, 288
   offset: 0, 0
   index: -1
+Belly
+  rotate: true
+  xy: 2, 10
+  size: 135, 159
+  orig: 135, 159
+  offset: 0, 0
+  index: -1
 Detected/Arm-L
   rotate: false
   xy: 159, 150
@@ -40,8 +47,8 @@ Detected/Arm-L
   offset: 0, 0
   index: -1
 Detected/Arm-R
-  rotate: true
-  xy: 616, 131
+  rotate: false
+  xy: 343, 151
   size: 88, 65
   orig: 88, 65
   offset: 0, 0
@@ -54,15 +61,15 @@ Detected/Base-Detected
   offset: 0, 0
   index: -1
 Detected/Ear-L
-  rotate: true
-  xy: 687, 50
+  rotate: false
+  xy: 433, 156
   size: 83, 63
   orig: 83, 63
   offset: 0, 0
   index: -1
 Detected/Ear-R
-  rotate: true
-  xy: 743, 160
+  rotate: false
+  xy: 470, 7
   size: 83, 63
   orig: 83, 63
   offset: 0, 0
@@ -76,56 +83,56 @@ Detected/Shock
   index: -1
 Detected/Tail
   rotate: true
-  xy: 209, 4
+  xy: 986, 316
   size: 39, 34
   orig: 39, 34
   offset: 0, 0
   index: -1
 Ear-B
-  rotate: true
-  xy: 752, 75
+  rotate: false
+  xy: 762, 13
   size: 83, 57
   orig: 83, 57
   offset: 0, 0
   index: -1
 Ear-F
-  rotate: true
-  xy: 683, 135
+  rotate: false
+  xy: 676, 12
   size: 84, 58
   orig: 84, 58
   offset: 0, 0
   index: -1
 Eye
-  rotate: false
-  xy: 399, 10
+  rotate: true
+  xy: 986, 285
   size: 29, 33
   orig: 29, 33
   offset: 0, 0
   index: -1
 Foot-B
-  rotate: false
-  xy: 550, 25
+  rotate: true
+  xy: 600, 174
   size: 45, 94
   orig: 45, 94
   offset: 0, 0
   index: -1
 Foot-F
   rotate: true
-  xy: 752, 7
+  xy: 261, 150
   size: 66, 80
   orig: 66, 80
   offset: 0, 0
   index: -1
 Hiding/Arm-L
   rotate: true
-  xy: 865, 183
+  xy: 555, 10
   size: 60, 59
   orig: 60, 59
   offset: 0, 0
   index: -1
 Hiding/Arm-R
-  rotate: false
-  xy: 926, 185
+  rotate: true
+  xy: 616, 11
   size: 59, 58
   orig: 59, 58
   offset: 0, 0
@@ -138,113 +145,113 @@ Hiding/Base
   offset: 0, 0
   index: -1
 Hiding/Eyes
-  rotate: false
-  xy: 245, 7
+  rotate: true
+  xy: 986, 423
   size: 86, 36
   orig: 86, 36
   offset: 0, 0
   index: -1
 Hiding/Mouth1
-  rotate: true
-  xy: 430, 10
+  rotate: false
+  xy: 986, 257
   size: 33, 26
   orig: 33, 26
   offset: 0, 0
   index: -1
 Hiding/Mouth2
-  rotate: true
-  xy: 109, 2
+  rotate: false
+  xy: 270, 2
   size: 21, 24
   orig: 21, 24
   offset: 0, 0
   index: -1
 Hiding/Nose
-  rotate: true
-  xy: 458, 14
+  rotate: false
+  xy: 293, 3
   size: 29, 23
   orig: 29, 23
   offset: 0, 0
   index: -1
 Hiding/Panting
-  rotate: true
-  xy: 808, 160
+  rotate: false
+  xy: 515, 99
   size: 83, 55
   orig: 83, 55
   offset: 0, 0
   index: -1
 Leg-B
   rotate: true
-  xy: 2, 14
+  xy: 163, 17
   size: 131, 105
   orig: 131, 105
   offset: 0, 0
   index: -1
 Leg-F
   rotate: true
-  xy: 109, 25
+  xy: 270, 28
   size: 120, 98
   orig: 120, 98
   offset: 0, 0
   index: -1
 Mouse
   rotate: true
-  xy: 209, 56
+  xy: 986, 204
   size: 51, 27
   orig: 51, 27
   offset: 0, 0
   index: -1
 Nose
   rotate: false
-  xy: 333, 7
+  xy: 986, 385
   size: 36, 36
   orig: 36, 36
   offset: 0, 0
   index: -1
 Sweat-1
   rotate: false
-  xy: 811, 79
+  xy: 450, 75
   size: 63, 79
   orig: 63, 79
   offset: 0, 0
   index: -1
 Sweat-2
   rotate: false
-  xy: 834, 3
+  xy: 370, 75
   size: 78, 74
   orig: 78, 74
   offset: 0, 0
   index: -1
 Whisker
   rotate: true
-  xy: 209, 109
+  xy: 962, 31
   size: 39, 50
   orig: 39, 50
   offset: 0, 0
   index: -1
 Win/Arm-L
-  rotate: false
-  xy: 914, 70
+  rotate: true
+  xy: 905, 14
   size: 56, 55
   orig: 56, 55
   offset: 0, 0
   index: -1
 Win/Arm-R
-  rotate: true
-  xy: 926, 127
+  rotate: false
+  xy: 847, 13
   size: 56, 57
   orig: 56, 57
   offset: 0, 0
   index: -1
 Win/Mouth3
-  rotate: false
-  xy: 371, 7
+  rotate: true
+  xy: 986, 357
   size: 26, 36
   orig: 26, 36
   offset: 0, 0
   index: -1
 Win/Win
   rotate: true
-  xy: 261, 45
+  xy: 696, 72
   size: 171, 287
   orig: 171, 287
   offset: 0, 0

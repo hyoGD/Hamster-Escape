@@ -1,17 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Spine;
-using Spine.Unity;
+
 
 public class MovingPlayer : MonoBehaviour
 {
     public static MovingPlayer instance;
-    public Anim anim;
+  //  public Anim anim;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] public bool isMoving, pause, doubt, die, win;
     [SerializeField] private Transform check;
-    [SerializeField] private LayerMask checkLayerMask, DoubtLayerMask;
+   // [SerializeField] private LayerMask checkLayerMask, DoubtLayerMask;
     [SerializeField] public float speed;
     [SerializeField] public int waypoinIndex;
 
@@ -27,16 +26,8 @@ public class MovingPlayer : MonoBehaviour
     private void Update()
     {
         Application.targetFrameRate = 60;
-        doubt = Physics2D.OverlapCircle(check.position, 2f, DoubtLayerMask);
-        if (doubt)
-        {
-            Cat.instance.PlayAnimCat(2);
-        }
-        //else
-        //{
-        //    Cat.instance.PlayAnimCat(1);
-        //}
-       
+
+
     }
     private void FixedUpdate()
     {
@@ -49,41 +40,45 @@ public class MovingPlayer : MonoBehaviour
         if (win)
         {
             float time = Time.deltaTime;
-            if(Time.timeScale > 0.2f)
+            if (Time.timeScale > 0.2f)
             {
                 Time.timeScale = Time.timeScale - time;
             }
+        }
+        if (doubt)
+        {
+
         }
     }
 
     public void Moving(GameController gamecontroller, Hamster hamster, Cat cat)
     {
+        Vector3 target = gamecontroller.targets[waypoinIndex + 1].transform.position;
+        float distToPlayer = Vector2.Distance(transform.position, target);
         #region xử lý khi đi đến 1 vật thể check điều kiện với ký tự bấm trước đó
         if (isMoving && !pause && !die)
-        {
+        {           
             if (waypoinIndex <= gamecontroller.targets.Count - 1)
             {
                 hamster.PlayAnimHamster(1);
-              //  cat.PlayAnimCat(1);
-                transform.position = Vector2.MoveTowards(transform.position, gamecontroller.targets[waypoinIndex + 1].transform.position, speed * Time.deltaTime);
-                if (transform.position == gamecontroller.targets[waypoinIndex + 1].transform.position && waypoinIndex <= gamecontroller.check_Chain.Count - 1)
+                transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
+                if (transform.position == target && waypoinIndex <= gamecontroller.check_Chain.Count - 1)
                 {
                     CheckGamePlay(gamecontroller, hamster, cat);
                 }
-
-                if (transform.position == gamecontroller.targets[waypoinIndex + 1].transform.position && waypoinIndex == gamecontroller.check_Chain.Count)
+                if (transform.position == target && waypoinIndex == gamecontroller.check_Chain.Count)
                 {
                     win = true;
                     rb.AddForce(transform.right * 50f);
-                    hamster.PlayAnimHamster(4);
+                    hamster.PlayAnimHamster(3);
                     Invoke("Win", 1f);
-                    pause = true;
-                    //  ShibaHide();
+                    pause = true;                  
                     Debug.Log("Finish");
                 }
                 else
                 {
-                    die = Physics2D.OverlapCircle(check.position, 0.1f, checkLayerMask);
+                  
+                   // die = Physics2D.OverlapCircle(check.position, 0.1f, checkLayerMask);
 
                 }
             }
@@ -93,7 +88,7 @@ public class MovingPlayer : MonoBehaviour
 
             }
 
-        }
+        }      
         #endregion
     }
 
@@ -104,7 +99,9 @@ public class MovingPlayer : MonoBehaviour
 
             if (gamecontroller.check_Chain[waypoinIndex])
             {
-                cat.PlayAnimCat(2);
+                // cat.PlayAnimCat(4);
+                cat.PlayAnimCat(4);
+                Invoke("IsDoubt", 1f);
                 hamster.PlayAnimHamster(0);
                 Invoke("ShibaHide", 3f);
 
@@ -116,7 +113,8 @@ public class MovingPlayer : MonoBehaviour
             }
             else
             {
-                cat.PlayAnimCat(2);
+                cat.PlayAnimCat(4);
+                Invoke("IsDoubt", 0.5f);
                 Invoke("CheckDie", 2f);
                 // anim.ShowShiba();
                 Invoke("ShibaHide", 2f);
@@ -127,18 +125,18 @@ public class MovingPlayer : MonoBehaviour
         }
         else
         {
-
             if (gamecontroller.check_Chain[waypoinIndex])
             {
-
+                // cat.PlayAnimCat(4);
                 waypoinIndex += 1;
-                cat.PlayAnimCat(1);
+                // cat.PlayAnimCat(4);
                 Debug.Log("dung dieu kien 2");
 
             }
             else
             {
-                cat.PlayAnimCat(2);
+                cat.PlayAnimCat(4);
+                Invoke("IsDoubt", 0.5f);
                 hamster.PlayAnimHamster(0);
                 //StartCoroutine(See());
                 // anim.ShowShiba();
@@ -146,33 +144,36 @@ public class MovingPlayer : MonoBehaviour
                 Invoke("ShibaHide", 2f);
                 pause = true;
                 // Invoke("See", 5f);
-
                 Debug.Log("sai dieu kien 2");
 
             }
         }
     }
     public void See()
-    {
-        //  yield return new WaitForSeconds(5);
+    {       
         if (pause)
         {
+
             waypoinIndex += 1;
             pause = false;
+            Cat.instance.PlayAnimCat(3);
         }
     }
-   
 
+    public void IsDoubt()
+    {
+        Cat.instance.PlayAnimCat(2);
+    }
     public void ShibaHide()
     {
         if (!die)
         {
-            Cat.instance.PlayAnimCat(3);
+            Cat.instance.PlayAnimCat(5);
 
         }
         else
         {
-            Cat.instance.PlayAnimCat(4);
+            Cat.instance.PlayAnimCat(6);
         }
     }
 
@@ -180,21 +181,19 @@ public class MovingPlayer : MonoBehaviour
     {
 
         die = true;
-      
+
     }
     void Die()
     {
         pause = true;
-       // Cat.instance.PlayAnimCat(4);
-        Hamster.instance.PlayAnimHamster(3);
+        // Cat.instance.PlayAnimCat(4);
+        Hamster.instance.PlayAnimHamster(2);
         GameController.instance.Lose.SetActive(true);
-      
-        // isMoving = false;
-       
+
     }
     void Win()
     {
-      
+
         rb.velocity = Vector2.zero;
     }
 }
