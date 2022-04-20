@@ -3,7 +3,9 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - Camfollow
     - Cat
+    - CatFollowHamster
     - Data
+    - DestroyGameObject
     - GameController
     - Hamster
     - Icon
@@ -148,12 +150,18 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 50
       Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 91
       Script: {instanceID: 0}
     - Class: 95
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1610}
     - Class: 114
       Script: {instanceID: 1612}
     - Class: 114
@@ -204,6 +212,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 9150}
     - Class: 114
       Script: {instanceID: 9650}
+    - Class: 114
+      Script: {instanceID: 119104}
+    - Class: 114
+      Script: {instanceID: 130232}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -569,7 +581,7 @@ ScriptsOnlyBuild:
     className: SkeletonUtilityKinematicShadow
   - hash:
       serializedVersion: 2
-      Hash: 5e11027af9b91c317b031abaa36a9433
+      Hash: cf48cc208ac5e1e9f3c7669fcf46ea71
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Hamster
@@ -1233,12 +1245,6 @@ ScriptsOnlyBuild:
     assemblyName: LeanTransition.dll
     namespaceName: Lean.Transition.Method
     className: LeanTransformLocalPosition
-  - hash:
-      serializedVersion: 2
-      Hash: 2a26d11d149ae887afd7ee61d7179a24
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Anim
   - hash:
       serializedVersion: 2
       Hash: aba7b2852ef61d175dd9602e7723d5e5
@@ -2009,7 +2015,7 @@ ScriptsOnlyBuild:
     className: DataAssetsFromExportsExample
   - hash:
       serializedVersion: 2
-      Hash: 235e7995e2c4914d0a90aaa2b9e08971
+      Hash: 269257fdf83d9ec4c3fdca9043986fed
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MovingPlayer
@@ -2339,7 +2345,7 @@ ScriptsOnlyBuild:
     className: SkeletonUtilityBone
   - hash:
       serializedVersion: 2
-      Hash: cf2927fd1fa3690dab51d4d469c2ddd9
+      Hash: dba85e534be1db077d15d06661944439
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Cat
@@ -2531,7 +2537,7 @@ ScriptsOnlyBuild:
     className: UnityOnMouseOverMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 06315c56df069415f92c792152cefdd4
+      Hash: 1752c8e234bf072ece8123b85237fc6a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Tutorial
@@ -2669,7 +2675,7 @@ ScriptsOnlyBuild:
     className: SkeletonAnimationHandleExample
   - hash:
       serializedVersion: 2
-      Hash: 4d74c66c3ce0e1df90da463409a152dc
+      Hash: baa6de7feadc1192300fd169a70b6b86
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameController
@@ -2739,8 +2745,20 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CatFollowHamster
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DestroyGameObject
   platform: 13
   scenePathNames:
   - Assets/Scenes/Loading.unity
   - Assets/Scenes/Play.unity
-  playerPath: D:/Unity_Build/Androi/HamterEscape7.apk
+  playerPath: D:/Unity_Build/Androi/HamterEscape8.apk
