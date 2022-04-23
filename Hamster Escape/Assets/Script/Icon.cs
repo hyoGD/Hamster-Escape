@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 //set up chain theo du lieu data.cs
 public class Icon : MonoBehaviour
 {
@@ -10,8 +11,9 @@ public class Icon : MonoBehaviour
     public Data data;
     public RectTransform rect;
     public bool opaque, normal = true, isTrue;
-       
+    Vector2 Vcurrent;
     // Start is called before the first frame update
+   
     void Start()
     {
         parent = GetComponent<Image>();
@@ -20,8 +22,14 @@ public class Icon : MonoBehaviour
         {
             setIcon(t_icon);
         }
+        Vcurrent = transform.position;      
     }
+    private void OnEnable()
+    {
+      //  transform.localPosition = new Vector2(-Screen.width, 0);
+       // transform.LeanMoveLocalX(Vcurrent, 1f).setEaseInOutExpo().delay = 0.1f;
 
+    }
     // Update is called once per frame
     void Update()
     {
@@ -56,6 +64,8 @@ public class Icon : MonoBehaviour
                 case type.tamgiac:
                     geometry.sprite = data.chain_Normal[1];
                 rect.sizeDelta = new Vector2(66, 59);
+                //rect.LeanMoveLocalY(5, 0.1f);
+                rect.DOLocalMoveY(5, 0.1f);
                 break;
                 case type.vuong:
                     geometry.sprite = data.chain_Normal[2];

@@ -3,8 +3,7 @@ using UnityEngine;
 [System.Serializable]
 public class Item 
 {
-    public int level;
-    public float distanceTrack;
+    public int level;  
     public GameObject[] amountItem;
     
 

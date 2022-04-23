@@ -12,6 +12,8 @@ ScriptsOnlyBuild:
     - Loading
     - MovingPlayer
     - Tutorial
+    DOTween.dll:
+    - DG.Tweening.Core.DOTweenSettings
     LeanGUI.dll:
     - Lean.Gui.LeanSafeArea
     Unity.2D.Animation.Editor.dll:
@@ -58,12 +60,13 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.HorizontalLayoutGroup
     - UnityEngine.UI.Image
     - UnityEngine.UI.LayoutElement
+    - UnityEngine.UI.Mask
     - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
-    - UnityEngine.UI.VerticalLayoutGroup
     spine-unity-editor.dll:
     - Spine.Unity.Editor.SpinePreferences
     spine-unity.dll:
+    - Spine.Unity.BoneFollower
     - Spine.Unity.SkeletonAnimation
     - Spine.Unity.SkeletonDataAsset
     - Spine.Unity.SpineAtlasAsset
@@ -84,33 +87,33 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1610}
+      Script: {instanceID: 1616}
     - Class: 114
-      Script: {instanceID: 1612}
+      Script: {instanceID: 1618}
     - Class: 114
-      Script: {instanceID: 2380}
+      Script: {instanceID: 2386}
     - Class: 114
-      Script: {instanceID: 2918}
+      Script: {instanceID: 2924}
     - Class: 114
-      Script: {instanceID: 3192}
+      Script: {instanceID: 3198}
     - Class: 114
-      Script: {instanceID: 3572}
+      Script: {instanceID: 3994}
     - Class: 114
-      Script: {instanceID: 4734}
+      Script: {instanceID: 4752}
     - Class: 114
-      Script: {instanceID: 4858}
+      Script: {instanceID: 4878}
     - Class: 114
-      Script: {instanceID: 5198}
+      Script: {instanceID: 5218}
     - Class: 114
-      Script: {instanceID: 5220}
+      Script: {instanceID: 5240}
     - Class: 114
-      Script: {instanceID: 6110}
+      Script: {instanceID: 6130}
     - Class: 114
-      Script: {instanceID: 6830}
+      Script: {instanceID: 6858}
     - Class: 114
-      Script: {instanceID: 7460}
+      Script: {instanceID: 7488}
     - Class: 114
-      Script: {instanceID: 7738}
+      Script: {instanceID: 7766}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -161,61 +164,63 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1610}
+      Script: {instanceID: 1616}
     - Class: 114
-      Script: {instanceID: 1612}
+      Script: {instanceID: 1618}
     - Class: 114
-      Script: {instanceID: 1810}
+      Script: {instanceID: 1816}
     - Class: 114
-      Script: {instanceID: 1818}
+      Script: {instanceID: 1824}
     - Class: 114
-      Script: {instanceID: 2458}
+      Script: {instanceID: 2464}
     - Class: 114
-      Script: {instanceID: 2846}
+      Script: {instanceID: 2852}
     - Class: 114
-      Script: {instanceID: 2918}
+      Script: {instanceID: 2924}
     - Class: 114
-      Script: {instanceID: 3018}
+      Script: {instanceID: 3024}
     - Class: 114
-      Script: {instanceID: 3192}
+      Script: {instanceID: 3198}
     - Class: 114
-      Script: {instanceID: 3282}
+      Script: {instanceID: 3288}
     - Class: 114
-      Script: {instanceID: 3572}
+      Script: {instanceID: 3578}
     - Class: 114
-      Script: {instanceID: 3768}
+      Script: {instanceID: 3776}
     - Class: 114
-      Script: {instanceID: 5220}
+      Script: {instanceID: 4066}
     - Class: 114
-      Script: {instanceID: 6002}
+      Script: {instanceID: 4578}
     - Class: 114
-      Script: {instanceID: 6018}
+      Script: {instanceID: 5240}
     - Class: 114
-      Script: {instanceID: 6110}
+      Script: {instanceID: 6022}
     - Class: 114
-      Script: {instanceID: 6168}
+      Script: {instanceID: 6038}
     - Class: 114
-      Script: {instanceID: 6546}
+      Script: {instanceID: 6130}
     - Class: 114
-      Script: {instanceID: 6830}
+      Script: {instanceID: 6188}
     - Class: 114
-      Script: {instanceID: 7048}
+      Script: {instanceID: 6566}
     - Class: 114
-      Script: {instanceID: 7338}
+      Script: {instanceID: 6858}
     - Class: 114
-      Script: {instanceID: 7460}
+      Script: {instanceID: 7076}
     - Class: 114
-      Script: {instanceID: 8006}
+      Script: {instanceID: 7366}
     - Class: 114
-      Script: {instanceID: 8104}
+      Script: {instanceID: 7488}
     - Class: 114
-      Script: {instanceID: 8212}
+      Script: {instanceID: 8132}
     - Class: 114
-      Script: {instanceID: 8478}
+      Script: {instanceID: 8240}
     - Class: 114
-      Script: {instanceID: 9152}
+      Script: {instanceID: 8506}
     - Class: 114
-      Script: {instanceID: 9652}
+      Script: {instanceID: 9186}
+    - Class: 114
+      Script: {instanceID: 9688}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1037,6 +1042,18 @@ ScriptsOnlyBuild:
     className: PlayerQuitHandler
   - hash:
       serializedVersion: 2
+      Hash: 704dcd31abc789439bc3f3cd10b58c2b
+    assemblyName: DOTween.dll
+    namespaceName: DG.Tweening.Core
+    className: DOTweenComponent
+  - hash:
+      serializedVersion: 2
+      Hash: 9b2663563359a91d0a6867fee160c936
+    assemblyName: DOTween.dll
+    namespaceName: DG.Tweening.Core
+    className: DOTweenSettings
+  - hash:
+      serializedVersion: 2
       Hash: 2c0a467ee7950c941c2dd8ef6b974a7e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1775,7 +1792,7 @@ ScriptsOnlyBuild:
     className: LeanGameObjectPool
   - hash:
       serializedVersion: 2
-      Hash: 902a82b7c6adad7fea0e554685a095dc
+      Hash: 424b90e71535aaf0290dae960d8a549b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Data
@@ -2549,7 +2566,7 @@ ScriptsOnlyBuild:
     className: UnityOnMouseOverMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 1752c8e234bf072ece8123b85237fc6a
+      Hash: c43ded5b3fe9fc4cd906849b6d5c803a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Tutorial
@@ -2687,7 +2704,7 @@ ScriptsOnlyBuild:
     className: SkeletonAnimationHandleExample
   - hash:
       serializedVersion: 2
-      Hash: baa6de7feadc1192300fd169a70b6b86
+      Hash: 43185f8827355e3ad15d9d2be0f66b14
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameController
@@ -2761,4 +2778,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/Loading.unity
   - Assets/Scenes/Play.unity
-  playerPath: D:/Unity_Build/Androi/HamterEscape9.apk
+  playerPath: D:/Unity_Build/Androi/HamterEscape10.apk

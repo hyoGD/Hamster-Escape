@@ -8,6 +8,8 @@ public class Data : ScriptableObject
 {
     public List<Questions> question= new List<Questions>();
     public List<Item> Items = new List<Item>();
+    public type[] chainArr;
+    public Colorr[] color;
     public List<GameObject> itemDeco;
     [Header("Sprite Chuoi bieu tuong")]
     public Sprite[] chain_Normal;

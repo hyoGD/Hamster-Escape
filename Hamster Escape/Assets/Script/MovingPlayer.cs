@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 
 public class MovingPlayer : MonoBehaviour
 {
@@ -22,6 +22,9 @@ public class MovingPlayer : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        Cat.instance.PlayAnimCat(Random.Range(0, 2));
+
     }
     private void Update()
     {
@@ -37,11 +40,11 @@ public class MovingPlayer : MonoBehaviour
         }
         if (win)
         {
-            float time = Time.deltaTime;
-            if (Time.timeScale > 0.2f)
-            {
-                Time.timeScale = Time.timeScale - time;
-            }
+            //float time = Time.deltaTime;
+            //if (Time.timeScale > 0.2f)
+            //{
+            //    Time.timeScale = Time.timeScale - time;
+            //}
         }
         if (doubt)
         {
@@ -51,6 +54,7 @@ public class MovingPlayer : MonoBehaviour
 
     public void Moving(GameController gamecontroller, Hamster hamster, Cat cat)
     {
+       
         Vector3 target = gamecontroller.targets[waypoinIndex + 1].transform.position;
         float distToPlayer = Vector2.Distance(transform.position, target);
         #region xử lý khi đi đến 1 vật thể check điều kiện với ký tự bấm trước đó
@@ -58,8 +62,13 @@ public class MovingPlayer : MonoBehaviour
         {           
             if (waypoinIndex <= gamecontroller.targets.Count - 1)
             {
+                if (transform.position == gamecontroller.targets[0].transform.position)
+                {
+                    cat.PlayAnimCat(3);
+                    Debug.Log("Start");
+                }
                 hamster.PlayAnimHamster(1);
-                transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);              
                 if (transform.position == target && waypoinIndex <= gamecontroller.check_Chain.Count-1)
                 {
                     CheckGamePlay(gamecontroller, hamster, cat);
@@ -67,9 +76,10 @@ public class MovingPlayer : MonoBehaviour
                 if (transform.position == gamecontroller.targets[gamecontroller.targets.Count-1].transform.position)
                 {
                     win = true;
-                    rb.AddForce(transform.right * 50f);
+                    // rb.AddForce(transform.right * 50f);
+                    transform.DOMove(transform.position + Vector3.right * 2f, 2f).SetEase(Ease.OutQuad);
                     hamster.PlayAnimHamster(3);
-                    Invoke("Win", 1f);
+                    //Invoke("Win", 1f);
                     pause = true;                  
                     Debug.Log("Finish");
                 }
@@ -86,7 +96,8 @@ public class MovingPlayer : MonoBehaviour
 
             }
 
-        }      
+        }
+        
         #endregion
     }
 
@@ -187,5 +198,7 @@ public class MovingPlayer : MonoBehaviour
 
         rb.velocity = Vector2.zero;
     }
+
+   
 }
 

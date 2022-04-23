@@ -1,187 +1,187 @@
 
 Cat.png
-size: 4096,4096
+size: 4096,2048
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 B-L
-  rotate: true
-  xy: 1093, 1027
+  rotate: false
+  xy: 840, 345
   size: 211, 76
   orig: 211, 76
   offset: 0, 0
   index: -1
 B-R
-  rotate: true
-  xy: 1093, 814
+  rotate: false
+  xy: 1053, 345
   size: 211, 76
   orig: 211, 76
   offset: 0, 0
   index: -1
 B2-L
   rotate: true
-  xy: 4071, 1789
+  xy: 2, 27
   size: 247, 23
   orig: 247, 23
   offset: 0, 0
   index: -1
 B2-R
-  rotate: true
-  xy: 4071, 1540
+  rotate: false
+  xy: 2, 2
   size: 247, 23
   orig: 247, 23
   offset: 0, 0
   index: -1
 Collar
   rotate: false
-  xy: 1701, 834
+  xy: 2137, 1850
   size: 1006, 182
   orig: 1006, 182
   offset: 0, 0
   index: -1
 Ear-L
   rotate: false
-  xy: 1093, 190
+  xy: 3516, 1602
   size: 373, 322
   orig: 373, 322
   offset: 0, 0
   index: -1
 Ear-R
   rotate: false
-  xy: 3109, 2
+  xy: 3516, 1278
   size: 373, 322
   orig: 373, 322
   offset: 0, 0
   index: -1
 Eyes-Detected
   rotate: false
-  xy: 3109, 326
+  xy: 2301, 269
   size: 853, 331
   orig: 853, 331
   offset: 0, 0
   index: -1
 Eyes-Doubt
   rotate: false
-  xy: 3204, 2038
+  xy: 3161, 1926
   size: 884, 106
   orig: 884, 106
   offset: 0, 0
   index: -1
 Eyes-Idle
   rotate: false
-  xy: 1701, 657
+  xy: 3161, 806
   size: 862, 175
   orig: 862, 175
   offset: 0, 0
   index: -1
 Eyes-Not Detected
   rotate: false
-  xy: 1701, 481
+  xy: 3161, 630
   size: 860, 174
   orig: 860, 174
   offset: 0, 0
   index: -1
 Fx-Detected
   rotate: true
-  xy: 2709, 773
+  xy: 27, 33
   size: 241, 405
   orig: 241, 405
   offset: 0, 0
   index: -1
 Fx-NotDetected
   rotate: true
-  xy: 2779, 1016
+  xy: 1664, 600
   size: 354, 417
   orig: 354, 417
   offset: 0, 0
   index: -1
 Head
-  rotate: false
-  xy: 1760, 1372
+  rotate: true
+  xy: 723, 590
   size: 1442, 939
   orig: 1442, 939
   offset: 0, 0
   index: -1
 Mouth-Detected
   rotate: true
-  xy: 1228, 514
+  xy: 1664, 956
   size: 1076, 471
   orig: 1076, 471
   offset: 0, 0
   index: -1
 Mouth-Idle
   rotate: false
-  xy: 1701, 1018
+  xy: 2083, 602
   size: 1076, 352
   orig: 1076, 352
   offset: 0, 0
   index: -1
 Mouth-NotDetected
   rotate: false
-  xy: 3204, 2146
+  xy: 723, 423
   size: 884, 165
   orig: 884, 165
   offset: 0, 0
   index: -1
 Nose
   rotate: true
-  xy: 1093, 1240
+  xy: 723, 285
   size: 136, 115
   orig: 136, 115
   offset: 0, 0
   index: -1
 Paw-Detected
-  rotate: false
-  xy: 2, 1592
+  rotate: true
+  xy: 2, 276
   size: 1756, 719
   orig: 1756, 719
   offset: 0, 0
   index: -1
 Paw-Idle
   rotate: false
-  xy: 2, 1378
+  xy: 434, 62
   size: 1224, 212
   orig: 1224, 212
   offset: 0, 0
   index: -1
 Pupil-L
-  rotate: false
-  xy: 1701, 1482
+  rotate: true
+  xy: 434, 16
   size: 44, 108
   orig: 44, 108
   offset: 0, 0
   index: -1
 Pupil-R
-  rotate: false
-  xy: 1701, 1372
+  rotate: true
+  xy: 544, 16
   size: 44, 108
   orig: 44, 108
   offset: 0, 0
   index: -1
 Table
-  rotate: true
-  xy: 2, 296
-  size: 1080, 1089
-  orig: 1080, 1089
+  rotate: false
+  xy: 3161, 4
+  size: 348, 624
+  orig: 348, 624
   offset: 0, 0
   index: -1
 Tail
-  rotate: true
-  xy: 2565, 132
+  rotate: false
+  xy: 1660, 46
   size: 639, 542
   orig: 639, 542
   offset: 0, 0
   index: -1
 laze-L
-  rotate: true
-  xy: 3198, 659
+  rotate: false
+  xy: 2831, 983
   size: 683, 865
   orig: 683, 865
   offset: 0, 0
   index: -1
 laze-R
-  rotate: true
-  xy: 3204, 1344
+  rotate: false
+  xy: 2137, 983
   size: 692, 865
   orig: 692, 865
   offset: 0, 0
