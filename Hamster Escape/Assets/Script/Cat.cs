@@ -7,7 +7,6 @@ public class Cat : MonoBehaviour
 {
     public static Cat instance;
     [Header("SPINE")]
-   
     //  public SkeletonAnimation hamsterSpine;
     public SkeletonAnimation cat;
     [SpineAnimation] public List<string> catAnimation;

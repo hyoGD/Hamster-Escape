@@ -110,7 +110,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fistPlay: 1
   mess: {fileID: 0}
-  startPos: {fileID: 0}
-  endPos: {fileID: 0}
   animlv11: {fileID: 0}
   duration: 0

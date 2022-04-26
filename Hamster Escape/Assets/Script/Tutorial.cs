@@ -6,8 +6,7 @@ using DG.Tweening;
 public class Tutorial : MonoBehaviour
 {
     public bool fistPlay = false;
-    public GameObject mess;
-    public RectTransform startPos, endPos;
+    public GameObject mess;  
    public Animator animlv11;
     public float duration;
     string txtMesslv1 = "Press the correct icon to let the Hamster hide behind the objects.Don't get caught.";

@@ -29,29 +29,29 @@ public class GameController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txtLevelCurrent;
     [SerializeField] private TextMeshProUGUI txtLevelNext;
 
-
     [Header("Scripts, Data")]
-
     [SerializeField] private Tutorial tutor;
     [SerializeField] public Data data;
 
     [Header("Object va bien dem")]
     [SerializeField] public int index;
     [SerializeField] public type[] loaihinh;
-    private List<Icon> chainIconList = new List<Icon>();
-    private List<type> addChain = new List<type>();
+    public List<Icon> chainIconList = new List<Icon>();
+    public List<type> addChain = new List<type>();
     [SerializeField] public List<bool> addOpaque = new List<bool>();
     [SerializeField] public List<GameObject> addItem = new List<GameObject>();
     [SerializeField] public List<bool> check_Chain;
     [SerializeField] Icon chainPrefab;
     private Icon s_Chain; //obj chua obj duoc khoi tao tu prefab
     [SerializeField] public Transform hidd_tranform;
-    [SerializeField] public RectTransform c_tranform,endRectranform;
+    [SerializeField] public RectTransform c_tranform;// endRectranform;
     [SerializeField] public List<Transform> targets;
     [SerializeField] int topIndChain;
     private float distance;
     private bool pause;
-    int ran;
+    private bool normalSpeed = true;
+   public int indexIcon;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -64,12 +64,15 @@ public class GameController : MonoBehaviour
         if (tutor == null)
         {
             tutor = GameObject.Find("Tutorial").GetComponent<Tutorial>();
-        }  
-        #endregion     
-     
-        index = PlayerPrefs.GetInt("Index", 0);
+        }
+        #endregion
 
-        SetUpGame();
+        index = PlayerPrefs.GetInt("Index", 0);
+        foreach (type t in data.chainArr)      //add tat ca phan tu type t trong mang type chainArr trong Data
+        {
+            addChain.Add(t);
+        }
+       
     }
     void Start()
     {
@@ -79,27 +82,26 @@ public class GameController : MonoBehaviour
             buttonSwitch[i].onClick.AddListener(() => Click(loaihinh[ind]));
         }
 
+        SetUpGame();
 
         #region tinh toan khoang cach tu diem start den diem cuoi(diem dich)
         //  targets[targets.Count - 1].transform.position += new Vector3(data.Items[index].distanceTrack, 0, 0);   //dat vi tri ve dich theo data
-        distance = ((targets[targets.Count - 1].transform.position+ Vector3.right) - MovingPlayer.instance.transform.position).magnitude; //koang cach tu vi tri dau den vi tri ve dich(vi tri cuoi cug)
+        distance = ((targets[targets.Count - 1].transform.position + Vector3.right) - MovingPlayer.instance.transform.position).magnitude; //koang cach tu vi tri dau den vi tri ve dich(vi tri cuoi cug)
         s_distance.maxValue = distance;
         #endregion
 
-      //  c_tranform.DOAnchorPos(endRectranform.anchoredPosition, 1f).SetEase(Ease.OutQuart);
+        //  c_tranform.DOAnchorPos(endRectranform.anchoredPosition, 1f).SetEase(Ease.OutQuart);
 
-        
-      
     }
 
     // Update is called once per frame
     void Update()
     {
         Application.targetFrameRate = 60;
-        if (chainIconList.Count == 0)
+        if (/*chainIconList.Count == 0*/ topIndChain == data.question[index].soluongchuoi[indexIcon - 1])
         {
             pause = false;
-      
+
             for (int i = 0; i < buttonSwitch.Length; i++)
             {
                 int ind = i;
@@ -113,15 +115,17 @@ public class GameController : MonoBehaviour
         {
             for (int i = 0; i < buttonSwitch.Length; i++)
             {
-                int ind = i;
+               // int ind = i;
                 // buttonSwitch[ind].onClick.RemoveAllListeners();
                 buttonSwitch[i].interactable = true;
             }
 
         }
-    
-    
-        InitListChair();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+
+            InitListChair();
+        } 
     }
     private void FixedUpdate()
     {
@@ -131,7 +135,7 @@ public class GameController : MonoBehaviour
         if (distance <= 0.1f)
         {
             int lv = index;
-            lv++;
+            lv++;         
             PlayerPrefs.SetInt("Index", lv);
             Win.SetActive(true);
         }
@@ -147,72 +151,120 @@ public class GameController : MonoBehaviour
                 buttonSwitch[2].gameObject.SetActive(false);
             }
         }
+
+
         #region tinh toan thong so trong Game bang voi du lieu trong data 
 
-        if (index >= data.Items[data.Items.Count - 1].level - 1)
+        if (index >= data.question[data.question.Count - 1].id - 1)
         {
-            index = data.Items[data.Items.Count - 1].level - 1;
+            index = data.question[data.question.Count - 1].id - 1;
             PlayerPrefs.SetInt("Index", index);
-           
-                txtLevelCurrent.text = data.Items[data.Items.Count - 1].level.ToString();
-                txtLevelNext.text = data.Items[data.Items.Count - 1].level.ToString();
-          
+
+            txtLevelCurrent.text = data.question[data.question.Count - 1].id.ToString();
+            txtLevelNext.text = data.question[data.question.Count - 1].id.ToString();
+
             Debug.Log("index da max");
         }
-        else if (index < data.Items[data.Items.Count - 1].level - 1)
+        else if (index < data.question[data.question.Count - 1].id - 1)
         {
-            if (data.Items[index].level < 9)
+            if (data.question[index].id < 9)
             {
-                txtLevelCurrent.text = "0" + data.Items[index].level.ToString();
-                txtLevelNext.text = "0" + data.Items[index + 1].level.ToString();
+                txtLevelCurrent.text = "0" + data.question[index].id.ToString();
+                txtLevelNext.text = "0" + data.question[index + 1].id.ToString();
             }
-            else if(data.Items[index].level >= 9)
+            else if (data.question[index].id >= 9)
             {
-                txtLevelCurrent.text = data.Items[index].level.ToString();
-                txtLevelNext.text = data.Items[index + 1].level.ToString();
+                txtLevelCurrent.text = data.question[index].id.ToString();
+                txtLevelNext.text = data.question[index + 1].id.ToString();
             }
             Debug.Log("index chua max");
         }
         txtLevel.text = "Level " + txtLevelCurrent.text;
         #endregion
 
-        foreach (type t in data.question[index].chainArr)      //add tat ca phan tu type t trong mang type chainArr trong Data
-        {
-            addChain.Add(t);
-        }
-        foreach (bool o in data.question[index].color)      //add tat ca phan tu bool o trong mang bool color trong Data
-        {
-            addOpaque.Add(o);
-        }
-        foreach (GameObject h in data.Items[index].amountItem)       //add tat ca phan tu gameObject h trong mang amoutItem trong Data
-        {
-            addItem.Add(h);
-        }
-        for (int i = 0; i <= data.question[index].chainArr.Length - 1; i++)
+        #region InitListChain
+        for (int i = 0; i < data.question[index]./*chainArr.Length - 1*/soluongchuoi[indexIcon]; i++)
         {
             s_Chain = Instantiate(chainPrefab, c_tranform); //khoi tao chuoi bang prefab Chain
-          //  s_Chain.transform.SetParent(c_tranform);
+                                                            //  s_Chain.transform.SetParent(c_tranform);
             chainIconList.Add(s_Chain);   //add chuoi vua khoi tao vao list chainIconList de sau de su dung
 
-            s_Chain.t_icon = addChain[i]; //dat kieu type hien thi 
-            s_Chain.opaque = addOpaque[i]; // dat color hien thi
+            // s_Chain.t_icon = addChain[i]; //dat kieu type hien thi 
+            //  s_Chain.opaque = addOpaque[i]; // dat color hien thi
+          
+           
+            if (index == 0)
+            {
+                s_Chain.t_icon = addChain[2];
+                s_Chain.opaque = data.question[i].colorr;
+            }
+            else
+            {
+                if (index < 10)
+                {
+                    s_Chain.t_icon = addChain[Random.Range(0, addChain.Count)];
+                    s_Chain.opaque = data.question[i].colorr = true;
+                }
+                else if (index == 10)
+                {
+                    s_Chain.t_icon = addChain[2];
+                    s_Chain.opaque = !data.question[i].colorr;
+                }
+                else
+                {
+                    s_Chain.t_icon = addChain[Random.Range(0, addChain.Count)];
+                    int a = Random.Range(0, 2);
+                    s_Chain.opaque = data.question[i].colorr = a == 1 ? true : false;
+                }
+
+            }
+            addOpaque.Add(s_Chain.opaque);
         }
-        for (int i = 0; i < data.Items[index].amountItem.Length; i++)
+        indexIcon++;
+        #endregion
+
+        #region Init Obj
+        for (int i = 0; i < data.question[index].Obj; i++)
         {
             if (i == 0)
             {
-                GameObject test = Instantiate(addItem[i], new Vector2(i+0.4f, 2), Quaternion.identity);
+                GameObject test = Instantiate(/*addItem[i]*/data.start, new Vector2(i + 0.4f, 2), Quaternion.identity);
                 test.transform.SetParent(hidd_tranform.transform);
                 targets.Add(test.transform.GetChild(0).transform);
             }
-            else 
+            else
             {
-                GameObject test = Instantiate(addItem[i], new Vector2(i * 10f, 1f), Quaternion.identity);
-                test.transform.SetParent(hidd_tranform.transform);
-                targets.Add(test.transform.GetChild(0).transform);
+                if (i < data.question[index].Obj - 1)
+                {
+                    int n = 0;
+                    if (addOpaque[n] == true)
+                    {
+                        var ran = Random.Range(0, data.Obj.Length - 1);
+                        GameObject test = Instantiate(/*addItem[i]*/data.Obj[ran], new Vector2(i * 10f, 1f), Quaternion.identity);
+                        test.transform.SetParent(hidd_tranform.transform);
+                        targets.Add(test.transform.GetChild(0).transform);
+                    }
+                    else
+                    {
+                        var ran = Random.Range(0, data.ObjHide.Length - 1);
+                        GameObject test = Instantiate(/*addItem[i]*/data.ObjHide[ran], new Vector2(i * 10f, 1f), Quaternion.identity);
+                        test.transform.SetParent(hidd_tranform.transform);
+                        targets.Add(test.transform.GetChild(0).transform);
+                    }
+                    n++;
+
+                }
+                else if (i == data.question[index].Obj - 1)
+                {
+                    GameObject test = Instantiate(/*addItem[i]*/ data.Finish, new Vector2(i * 10f, 1f), Quaternion.identity);
+                    test.transform.SetParent(hidd_tranform.transform);
+                    targets.Add(test.transform.GetChild(0).transform);
+                }
             }
         }
-        //deco item
+        #endregion
+
+        #region Inite DecoItem
         for (int i = 0; i <= data.itemDeco.Count - 1; i++)
         {
             GameObject itemDeco;
@@ -221,9 +273,55 @@ public class GameController : MonoBehaviour
             itemDeco = Instantiate(data.itemDeco[i], new Vector2(i + x, 3f), Quaternion.identity);
             itemDeco.transform.SetParent(hidd_tranform.transform);
         }
-
+        #endregion
     }
+   
+  
 
+    public void InitListChair()
+    {
+        if (indexIcon < data.question[index].soluongchuoi.Length)
+        {
+
+            pause = true;
+            topIndChain = 0;
+            foreach (Icon i in chainIconList)
+            {
+                Destroy(i.gameObject);
+            }
+            chainIconList.Clear();
+            addOpaque.Clear();
+            check_Chain.Clear();
+
+            for (int i = 0; i < data.question[index]./*chainArr.Length - 1*/soluongchuoi[indexIcon]; i++)
+            {
+                s_Chain = Instantiate(chainPrefab, c_tranform); //khoi tao chuoi bang prefab Chain
+                                                                //  s_Chain.transform.SetParent(c_tranform);
+                chainIconList.Add(s_Chain);   //add chuoi vua khoi tao vao list chainIconList de sau de su dung
+
+                // s_Chain.t_icon = addChain[i]; //dat kieu type hien thi 
+                //  s_Chain.opaque = addOpaque[i]; // dat color hien thi
+                s_Chain.t_icon = addChain[Random.Range(0, addChain.Count - 1)];
+                int a = Random.Range(0, 2);
+                // s_Chain.opaque = data.question[i].colorr = a == 1 ? true : false;
+                if (index <= 10)
+                {
+                    s_Chain.opaque = data.question[i].colorr = true;
+                }
+                else
+                {
+                    s_Chain.opaque = data.question[i].colorr = a == 1 ? true : false;
+                }
+                addOpaque.Add(s_Chain.opaque);
+            }
+            indexIcon++;
+            Debug.Log("Init chain");
+        }
+        else
+        {
+            return;
+        }
+    }
     public void Click(type c_loaihinh)
     {
 
@@ -245,45 +343,43 @@ public class GameController : MonoBehaviour
             #endregion
 
             #region kiem tra xem type button co bang voi type cua chuoi ky tu hay ko */
-            if (chainIconList[0].opaque)
+            if (chainIconList[topIndChain].opaque)
             {
 
-                if (c_loaihinh == addChain[topIndChain])
+                if (c_loaihinh == /*addChain[topIndChain]*/chainIconList[topIndChain].t_icon)
                 {
-                    chainIconList[0].isTrue = true; //luon luon la phan tu 0 trong list chain vi sau khi cick minh thuc hien xoa phan tu dau
+                    chainIconList[topIndChain].isTrue = true;
                     Debug.Log("Ban da chon dung");
-                    check_Chain.Add(chainIconList[0].isTrue);
+                    check_Chain.Add(chainIconList[topIndChain].isTrue);
                 }
                 else
                 {
-                    chainIconList[0].isTrue = false; //luon luon la phan tu 0 trong list chain vi sau khi cick minh thuc hien xoa phan tu dau
+                    chainIconList[topIndChain].isTrue = false;
                     Debug.Log("Ban da chon sai");
-                    check_Chain.Add(chainIconList[0].isTrue);
+                    check_Chain.Add(chainIconList[topIndChain].isTrue);
                 }
             }
             else
             {
                 /* kiem tra xem type button co bang voi type cua chuoi ky tu hay ko */
-                if (c_loaihinh == addChain[topIndChain])
+                if (c_loaihinh ==/* addChain[topIndChain]*/chainIconList[topIndChain].t_icon)
                 {
-                    chainIconList[0].isTrue = false; //luon luon la phan tu 0 trong list chain vi sau khi cick minh thuc hien xoa phan tu dau
-                    check_Chain.Add(chainIconList[0].isTrue);
+                    chainIconList[topIndChain].isTrue = false;
+                    check_Chain.Add(chainIconList[topIndChain].isTrue);
                     Debug.Log("Ban da chon sai");
                 }
                 else
                 {
-                    chainIconList[0].isTrue = true; //luon luon la phan tu 0 trong list chain vi sau khi cick minh thuc hien xoa phan tu dau
+                    chainIconList[topIndChain].isTrue = true;
                     Debug.Log("Ban da chon dung");
-                    check_Chain.Add(chainIconList[0].isTrue);
+                    check_Chain.Add(chainIconList[topIndChain].isTrue);
                 }
             }
-            chainIconList[0].normal = false;
+            chainIconList[topIndChain].normal = false;
 
             topIndChain++;
             #endregion
-            /* xoa nut bam dau tien trong list */
-            int ind = 0;
-            chainIconList.RemoveAt(ind);
+
         }
 
     }
@@ -293,9 +389,8 @@ public class GameController : MonoBehaviour
         s_distance.gameObject.SetActive(true);
         Ui.SetActive(false);
         tutor.SetTutorial();
-        //  anim.CatMoving();
         // Anim.instance.HIdeShiba();
-      ////  MovingPlayer.instance.isMoving = true;
+        ////  MovingPlayer.instance.isMoving = true;
         if (startImage != null)
         {
             startImage.SetActive(true);
@@ -317,43 +412,22 @@ public class GameController : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
-        //if(index == 9)
-        //{
-        //    tutor.gameObject.SetActive(true);
-        //    tutor.fistPlay = false;
-        //    PlayerPrefs.SetInt("Tutorial", tutor.fistPlay ? 1 : 0);
-        //}
-    }
 
-    void InitListChair()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (index == 9)
         {
-            pause = true;
-            for (int i = 0; i <= data.question[index].chainArr.Length - 1; i++)
-            {
-                //s_Chain = Instantiate(chainPrefab, c_tranform); //khoi tao chuoi bang prefab Chain
-                                                                //  s_Chain.transform.SetParent(c_tranform);
-                chainIconList.Add(s_Chain);   //add chuoi vua khoi tao vao list chainIconList de sau de su dung
-
-                s_Chain.t_icon = addChain[i]; //dat kieu type hien thi 
-                s_Chain.opaque = addOpaque[i]; // dat color hien thi
-                s_Chain.normal = true;
-            }
+         //   tutor.gameObject.SetActive(true);
+            tutor.fistPlay = false;
+            PlayerPrefs.SetInt("Tutorial", tutor.fistPlay ? 1 : 0);
         }
     }
 
-    private void OnDestroy()
+   
+
+
+
+    public void TimeSpeed()
     {
-        for (int i = 0; i < buttonSwitch.Length; i++)
-        {
-            int ind = i;
-            buttonSwitch[i].onClick.AddListener(() => Click(loaihinh[ind]));
-        }
-    }
-    public void TimeSpeed(bool normal)
-    {
-        if (normal)
+        if (normalSpeed)
         {
             Time.timeScale = 2f;
         }
@@ -361,6 +435,6 @@ public class GameController : MonoBehaviour
         {
             Time.timeScale = 1f;
         }
-        normal = !normal;
+        normalSpeed = !normalSpeed;
     }
 }
