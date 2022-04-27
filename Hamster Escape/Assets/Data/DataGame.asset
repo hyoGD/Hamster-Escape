@@ -36,7 +36,7 @@ MonoBehaviour:
   - level: Level 5
     id: 5
     soluongchuoi: 030000000300000004000000
-    colorr: 1
+    colorr: 0
     Obj: 5
   - level: Level 6
     id: 6
@@ -135,7 +135,6 @@ MonoBehaviour:
   - {fileID: 8432411622047598174, guid: fbaa7bbd3cfae0b4ab2e1d2f153e1b10, type: 3}
   - {fileID: 7247166964499071287, guid: 3650df50457314f4ab0280cc851071f9, type: 3}
   - {fileID: 3322093509109259189, guid: 87d244161228df64d97aa9a8dff718fa, type: 3}
-  ObjHide:
   - {fileID: 4857081075979863997, guid: 84b1c343cfe1cbe4d97bb56416944928, type: 3}
   - {fileID: 6462692973976307588, guid: ac6f1bab060e03a498efbd3bd266c975, type: 3}
   - {fileID: 610756239130918116, guid: b590bcba2b6895140bf911e45b6a8773, type: 3}

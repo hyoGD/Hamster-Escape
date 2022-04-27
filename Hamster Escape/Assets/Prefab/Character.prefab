@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonDataAsset: {fileID: 11400000, guid: 9472f47db899326438a4e281d6471300, type: 2}
-  initialSkinName: 
+  initialSkinName: Hamster 1
   initialFlipX: 0
   initialFlipY: 0
   updateWhenInvisible: 3
@@ -138,7 +138,11 @@ MonoBehaviour:
   - Hiding
   - Running
   - Detected
-  - Win
+  - Win1
+  - Win2
+  - Win3
+  - Troi-len
+  - An-bong-ngo
 --- !u!1 &608426408
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,7 +250,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 464a117faad275a43abe1ea6d7a71961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   rb: {fileID: 0}
   isMoving: 0
   pause: 0

@@ -22,5 +22,5 @@ public class Data : ScriptableObject
     [Header("Object")]
     public GameObject start, Finish;
     public GameObject[] Obj;
-    public GameObject[] ObjHide;
+   // public GameObject[] ObjHide;
 }

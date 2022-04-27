@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+public enum Colorr
+{
+    red,
+    blue,
+}
 
 public class MovingPlayer : MonoBehaviour
 {
@@ -16,12 +21,14 @@ public class MovingPlayer : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
+      
     }
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        int ran = Random.Range(0, 2);
-        Cat.instance.PlayAnimCat(ran);
+        //int ran = Random.Range(0, 2);
+        //Cat.instance.PlayAnimCat(ran);
 
     }
     private void Update()
@@ -36,59 +43,50 @@ public class MovingPlayer : MonoBehaviour
         {
             Invoke("Die", 0.1f);
         }
-        if (win)
-        {
-            float time = Time.deltaTime;
-            if (Time.timeScale > 0.2f)
-            {
-                Time.timeScale = Time.timeScale - time;
-            }
-        }
-        if (doubt)
-        {
-
-        }
+        //if (win)
+        //{
+        //    float time = Time.deltaTime;
+        //    if (Time.timeScale > 0.2f)
+        //    {
+        //        Time.timeScale = Time.timeScale - time;
+        //    }
+        //}
+       
     }
 
     public void Moving(GameController gamecontroller, Hamster hamster, Cat cat)
     {
-       
         Vector3 target = gamecontroller.targets[waypoinIndex + 1].transform.position;
         float distToPlayer = Vector2.Distance(transform.position, target);
 
         #region xử lý khi đi đến 1 vật thể check điều kiện với ký tự bấm trước đó
         if (isMoving && !pause && !die)
-        {           
+        {
             if (waypoinIndex <= gamecontroller.targets.Count - 1)
             {
                 if (transform.position == gamecontroller.targets[0].transform.position)
                 {
                     cat.PlayAnimCat(3);
-                    Debug.Log("Start");
+                    //  Debug.Log("Start");
                 }
                 hamster.PlayAnimHamster(1);
                 transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
                 if (transform.position == target && waypoinIndex < gamecontroller.data.question[gamecontroller.index].soluongchuoi.Length)
                 {
-
-                      CheckGamePlay(gamecontroller, hamster, cat);
-                 //   waypoinIndex++;
+                    doubt = false;
+                    CheckGamePlay(gamecontroller, hamster, cat);
+                    //   waypoinIndex++;
                 }
-                if (transform.position == gamecontroller.targets[gamecontroller.targets.Count-1].transform.position)
+                if (transform.position == gamecontroller.targets[gamecontroller.targets.Count - 2].transform.position)
                 {
                     win = true;
-                   
-                    transform.DOMove(transform.position + Vector3.right * 2f, 2f).SetEase(Ease.OutQuad);
-                    hamster.PlayAnimHamster(3);
-                  
-                    pause = true;                  
-                    Debug.Log("Finish");
-                }
-                else
-                {
-                  
-                   // die = Physics2D.OverlapCircle(check.position, 0.1f, checkLayerMask);
-
+                    pause = true;
+                    int ran = Random.Range(3, 6);
+                   // hamster.PlayAnimHamster(ran);
+                    // transform.DOMove(transform.position + Vector3.one * 3f, 2f).SetEase(Ease.OutQuad);
+                    // Debug.Log("Finish");
+                    //Invoke("Win", 1.7f);
+                    Win();
                 }
             }
             else
@@ -96,30 +94,22 @@ public class MovingPlayer : MonoBehaviour
                 return;
 
             }
-
         }
-        
+
         #endregion
     }
 
     void CheckGamePlay(GameController gamecontroller, Hamster hamster, Cat cat)
     {
-        //if (gamecontroller.addOpaque[waypoinIndex])
-        //{
-
+        if (gamecontroller.addItem[waypoinIndex].colorr == Colorr.blue)
+        {
             if (checkList())
-            {
-                // cat.PlayAnimCat(4);
-                cat.PlayAnimCat(4);
-                //  Invoke("IsDoubt", 1f);
-                hamster.PlayAnimHamster(0);
-                //   Invoke("ShibaHide", 3f);
-                pause = true;
-                //   Invoke("See", 5f);
+            {                        
+                cat.PlayAnimCat(4);         
+                hamster.PlayAnimHamster(0);             
+                pause = true;              
                 StartCoroutine(Action(1f, 3f, 2f));
-                Debug.Log("dung dieu kien 1");
-
-
+                // Debug.Log("dung dieu kien 1");
             }
             else
             {
@@ -129,34 +119,35 @@ public class MovingPlayer : MonoBehaviour
                 // anim.ShowShiba();
                 Invoke("ShibaHide", 2f);
                 waypoinIndex += 1;
-                Debug.Log("sai dieu kien 1");
-
+                // Debug.Log("sai dieu kien 1");
             }
-       // }
+        }
 
-        //else
-        //{
-        //    if (checkList())
-        //    {
-        //        // cat.PlayAnimCat(4);
-        //        waypoinIndex += 1;
-        //        Debug.Log("dung dieu kien 2");
-
-        //    }
-        //    else
-        //    {
-        //        cat.PlayAnimCat(4);
-        //      //  Invoke("IsDoubt", 0.5f);
-        //        hamster.PlayAnimHamster(0);
-        //       // Invoke("CheckDie", 2f);
-        //      //  Invoke("ShibaHide", 2f);
-        //        pause = true;
-        //        StartCoroutine(Action(0.5f, 2f, 2f));
-        //        Debug.Log("sai dieu kien 2");
-
-        //    }
-       // }
+        else if (gamecontroller.addItem[waypoinIndex].colorr == Colorr.red)
+        {
+            if (checkList())
+            {
+                doubt = true;     
+                cat.PlayAnimCat(4);
+                Invoke("IsDoubt", 0.5f);            
+                waypoinIndex += 1;
+                //   Debug.Log("dung dieu kien 2");
+                StartCoroutine(InitTrue(2f,1f));
+            }
+            else
+            {
+                cat.PlayAnimCat(4);
+                Invoke("IsDoubt", 0.5f);
+                hamster.PlayAnimHamster(0);
+                Invoke("CheckDie", 2f);
+                Invoke("ShibaHide", 2f);
+                pause = true;
+               
+              //  Debug.Log("sai dieu kien 2");
+            }
+        }
     }
+
     public bool checkList()
     {
         foreach(bool i in  GameController.instance.check_Chain)
@@ -171,27 +162,37 @@ public class MovingPlayer : MonoBehaviour
 
     IEnumerator Action(float doubt, float detected, float see)
     {
-        yield return new WaitForSeconds(doubt);
-        //  cat.PlayAnimCat(4);
+        yield return new WaitForSeconds(doubt);       
         IsDoubt();
-        //  hamster.PlayAnimHamster(0);
+       
         yield return new WaitForSeconds(detected);
         ShibaHide();
+
         GameController.instance.InitListChair();
-      //  Debug.Log("Init chain");
+      
         yield return new WaitForSeconds(see);
         See();
          
     }
+
+    IEnumerator InitTrue(float detected,float run)
+    {
+        yield return new WaitForSeconds(detected);
+        ShibaHide();
+        yield return new WaitForSeconds(run);
+        Cat.instance.PlayAnimCat(3);
+        GameController.instance.InitListChair();
+        yield return new WaitForSeconds(run);
+        doubt = false;
+    }
+
     public void See()
     {
         Cat.instance.PlayAnimCat(3);
         if (pause && !die)
         {
-
             waypoinIndex += 1;
             pause = false;
-
         }
     }
 
@@ -210,15 +211,13 @@ public class MovingPlayer : MonoBehaviour
         else
         {
             Cat.instance.PlayAnimCat(6);
-            CheckDie();
+           
         }
     }
 
     public void CheckDie()
     {
-
         die = true;
-
     }
 
     void Die()
@@ -227,8 +226,24 @@ public class MovingPlayer : MonoBehaviour
         // Cat.instance.PlayAnimCat(4);
         Hamster.instance.PlayAnimHamster(2);
         GameController.instance.Lose.SetActive(true);
-
     }
+    void Win()
+    {
+        int ran = Random.Range(3, 6);
+        Hamster.instance.hamster.SetAnimation(Hamster.instance.animAction[ran], false, () =>
+        {
+            Hamster.instance.transform.position = GameController.instance.targets[GameController.instance.targets.Count - 1].position;
+            Hamster.instance.hamster.SetAnimation(Hamster.instance.animAction[6], false, () =>
+              {
+                  Hamster.instance.hamster.SetAnimation(Hamster.instance.animAction[7], true);
+              });
+        });
+       
 
+        //Hamster.instance.hamster.SetAnimation(Hamster.instance.animAction[6], false, () =>
+        // {
+        //     Hamster.instance.hamster.SetAnimation(Hamster.instance.animAction[7], true);
+        // });
+    }
 }
 

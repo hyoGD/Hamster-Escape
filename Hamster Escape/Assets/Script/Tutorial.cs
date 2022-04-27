@@ -27,8 +27,8 @@ public class Tutorial : MonoBehaviour
             }
             else if (GameController.instance.index == 10)
             {
-                // gameObject.SetActive(true);
-                gameObject.GetComponent<Image>().enabled = false;
+                 gameObject.SetActive(true);
+              //  gameObject.GetComponent<Image>().enabled = false;
                 //startPos.DOAnchorPos(endPos.anchoredPosition, 1f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
                 mess.SetActive(true);
                 DOTween.To(() => txt, x => txt = x, txtMesslv11, duration).OnUpdate(() => mess.transform.GetChild(0).GetComponent<Text>().text = txt);

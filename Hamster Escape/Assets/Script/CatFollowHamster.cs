@@ -14,8 +14,15 @@ public class CatFollowHamster : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        Vector3 newPosition = MovingPlayer.instance.transform.position;
-        newPosition.y = transform.position.y;
-        transform.position = newPosition;
+        if (!MovingPlayer.instance.doubt)
+        {
+            Vector3 newPosition = MovingPlayer.instance.transform.position;
+            newPosition.y = transform.position.y;
+            transform.position = newPosition;
+        }
+        else
+        {
+            return;
+        }       
     }
 }

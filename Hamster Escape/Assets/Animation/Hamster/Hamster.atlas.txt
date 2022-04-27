@@ -1,258 +1,601 @@
 
 Hamster.png
-size: 1024,512
+size: 4096,1024
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 Arm-B
-  rotate: false
-  xy: 370, 6
+  rotate: true
+  xy: 721, 568
   size: 98, 64
   orig: 98, 64
   offset: 0, 0
   index: -1
 Arm-F
   rotate: false
-  xy: 600, 84
+  xy: 371, 2
   size: 92, 88
   orig: 92, 88
   offset: 0, 0
   index: -1
 B
   rotate: true
-  xy: 324, 7
+  xy: 835, 670
   size: 19, 16
   orig: 19, 16
   offset: 0, 0
   index: -1
 Base
-  rotate: true
-  xy: 696, 245
+  rotate: false
+  xy: 1572, 315
   size: 264, 288
   orig: 264, 288
   offset: 0, 0
   index: -1
 Belly
-  rotate: true
-  xy: 2, 10
+  rotate: false
+  xy: 1967, 862
   size: 135, 159
   orig: 135, 159
   offset: 0, 0
   index: -1
-Detected/Arm-L
+Blur
   rotate: false
-  xy: 159, 150
+  xy: 2, 88
+  size: 359, 450
+  orig: 359, 450
+  offset: 0, 0
+  index: -1
+Bóng
+  rotate: true
+  xy: 494, 93
+  size: 102, 34
+  orig: 102, 34
+  offset: 0, 0
+  index: -1
+Detected/Arm-L
+  rotate: true
+  xy: 530, 95
   size: 100, 66
   orig: 100, 66
   offset: 0, 0
   index: -1
 Detected/Arm-R
-  rotate: false
-  xy: 343, 151
+  rotate: true
+  xy: 465, 2
   size: 88, 65
   orig: 88, 65
   offset: 0, 0
   index: -1
 Detected/Base-Detected
   rotate: false
-  xy: 429, 221
+  xy: 1700, 733
   size: 265, 288
   orig: 265, 288
   offset: 0, 0
   index: -1
 Detected/Ear-L
-  rotate: false
-  xy: 433, 156
+  rotate: true
+  xy: 62, 3
   size: 83, 63
   orig: 83, 63
   offset: 0, 0
   index: -1
 Detected/Ear-R
-  rotate: false
-  xy: 470, 7
+  rotate: true
+  xy: 127, 3
   size: 83, 63
   orig: 83, 63
   offset: 0, 0
   index: -1
 Detected/Shock
   rotate: true
-  xy: 2, 147
+  xy: 335, 659
   size: 362, 155
   orig: 362, 155
   offset: 0, 0
   index: -1
 Detected/Tail
-  rotate: true
-  xy: 986, 316
+  rotate: false
+  xy: 818, 2
   size: 39, 34
   orig: 39, 34
   offset: 0, 0
   index: -1
 Ear-B
-  rotate: false
-  xy: 762, 13
+  rotate: true
+  xy: 192, 3
   size: 83, 57
   orig: 83, 57
   offset: 0, 0
   index: -1
 Ear-F
-  rotate: false
-  xy: 676, 12
+  rotate: true
+  xy: 2, 2
   size: 84, 58
   orig: 84, 58
   offset: 0, 0
   index: -1
 Eye
-  rotate: true
-  xy: 986, 285
+  rotate: false
+  xy: 909, 3
   size: 29, 33
   orig: 29, 33
   offset: 0, 0
   index: -1
 Foot-B
   rotate: true
-  xy: 600, 174
+  xy: 1325, 250
   size: 45, 94
   orig: 45, 94
   offset: 0, 0
   index: -1
 Foot-F
-  rotate: true
-  xy: 261, 150
+  rotate: false
+  xy: 2007, 697
   size: 66, 80
   orig: 66, 80
   offset: 0, 0
   index: -1
+Hamster/2/Arm-B
+  rotate: true
+  xy: 1331, 599
+  size: 96, 62
+  orig: 96, 62
+  offset: 0, 0
+  index: -1
+Hamster/2/Arm-F
+  rotate: true
+  xy: 598, 96
+  size: 99, 90
+  orig: 99, 90
+  offset: 0, 0
+  index: -1
+Hamster/2/Arm-L
+  rotate: true
+  xy: 787, 568
+  size: 98, 64
+  orig: 98, 64
+  offset: 0, 0
+  index: -1
+Hamster/2/Arm-L2
+  rotate: false
+  xy: 2075, 645
+  size: 61, 62
+  orig: 61, 62
+  offset: 0, 0
+  index: -1
+Hamster/2/Arm-R
+  rotate: true
+  xy: 1942, 645
+  size: 86, 63
+  orig: 86, 63
+  offset: 0, 0
+  index: -1
+Hamster/2/Arm-R2
+  rotate: true
+  xy: 2013, 251
+  size: 64, 59
+  orig: 64, 59
+  offset: 0, 0
+  index: -1
+Hamster/2/Arm-Win
+  rotate: false
+  xy: 532, 3
+  size: 158, 90
+  orig: 158, 90
+  offset: 0, 0
+  index: -1
+Hamster/2/Base
+  rotate: false
+  xy: 997, 241
+  size: 285, 328
+  orig: 285, 328
+  offset: 0, 0
+  index: -1
+Hamster/2/Base 3
+  rotate: true
+  xy: 1092, 697
+  size: 324, 323
+  orig: 324, 323
+  offset: 0, 0
+  index: -1
+Hamster/2/Base-Run
+  rotate: false
+  xy: 809, 691
+  size: 281, 330
+  orig: 281, 330
+  offset: 0, 0
+  index: -1
+Hamster/2/Blur
+  rotate: false
+  xy: 2, 540
+  size: 331, 481
+  orig: 331, 481
+  offset: 0, 0
+  index: -1
+Hamster/2/Chew
+  rotate: false
+  xy: 1054, 116
+  size: 93, 97
+  orig: 93, 97
+  offset: 0, 0
+  index: -1
+Hamster/2/Ear L
+  rotate: true
+  xy: 308, 5
+  size: 81, 61
+  orig: 81, 61
+  offset: 0, 0
+  index: -1
+Hamster/2/Ear R
+  rotate: true
+  xy: 1926, 317
+  size: 81, 61
+  orig: 81, 61
+  offset: 0, 0
+  index: -1
+Hamster/2/Ear-B
+  rotate: true
+  xy: 2104, 950
+  size: 71, 68
+  orig: 71, 68
+  offset: 0, 0
+  index: -1
+Hamster/2/Ear-F
+  rotate: true
+  xy: 2075, 709
+  size: 71, 69
+  orig: 71, 69
+  offset: 0, 0
+  index: -1
+Hamster/2/Glasses
+  rotate: false
+  xy: 1049, 215
+  size: 98, 24
+  orig: 98, 24
+  offset: 0, 0
+  index: -1
+Hamster/2/Glasses2
+  rotate: false
+  xy: 1141, 572
+  size: 60, 24
+  orig: 60, 24
+  offset: 0, 0
+  index: -1
+Hamster/2/Glasses3
+  rotate: true
+  xy: 853, 568
+  size: 121, 90
+  orig: 121, 90
+  offset: 0, 0
+  index: -1
+Hamster/2/Leg-B
+  rotate: false
+  xy: 468, 554
+  size: 129, 103
+  orig: 129, 103
+  offset: 0, 0
+  index: -1
+Hamster/2/Leg-F
+  rotate: true
+  xy: 945, 571
+  size: 118, 96
+  orig: 118, 96
+  offset: 0, 0
+  index: -1
+Hamster/2/Spin
+  rotate: true
+  xy: 363, 197
+  size: 353, 315
+  orig: 353, 315
+  offset: 0, 0
+  index: -1
+Hamster/3/Arm-B
+  rotate: true
+  xy: 1395, 599
+  size: 96, 62
+  orig: 96, 62
+  offset: 0, 0
+  index: -1
+Hamster/3/Arm-F
+  rotate: true
+  xy: 1854, 641
+  size: 90, 86
+  orig: 90, 86
+  offset: 0, 0
+  index: -1
+Hamster/3/Base
+  rotate: false
+  xy: 1417, 732
+  size: 281, 289
+  orig: 281, 289
+  offset: 0, 0
+  index: -1
+Hamster/3/Base 2
+  rotate: false
+  xy: 1742, 27
+  size: 269, 286
+  orig: 269, 286
+  offset: 0, 0
+  index: -1
+Hamster/3/Base 3
+  rotate: true
+  xy: 1284, 297
+  size: 299, 286
+  orig: 299, 286
+  offset: 0, 0
+  index: -1
+Hamster/3/Chew
+  rotate: false
+  xy: 1141, 598
+  size: 93, 97
+  orig: 93, 97
+  offset: 0, 0
+  index: -1
+Hamster/3/Ear-B
+  rotate: true
+  xy: 2104, 877
+  size: 71, 68
+  orig: 71, 68
+  offset: 0, 0
+  index: -1
+Hamster/3/Ear-F
+  rotate: true
+  xy: 2096, 789
+  size: 71, 69
+  orig: 71, 69
+  offset: 0, 0
+  index: -1
+Hamster/3/Ear-L
+  rotate: true
+  xy: 1989, 317
+  size: 81, 61
+  orig: 81, 61
+  offset: 0, 0
+  index: -1
+Hamster/3/Ear-R
+  rotate: true
+  xy: 1967, 779
+  size: 81, 61
+  orig: 81, 61
+  offset: 0, 0
+  index: -1
+Hamster/3/Foot-B
+  rotate: false
+  xy: 2038, 401
+  size: 64, 78
+  orig: 64, 78
+  offset: 0, 0
+  index: -1
+Hamster/3/Foot-F
+  rotate: false
+  xy: 2030, 782
+  size: 64, 78
+  orig: 64, 78
+  offset: 0, 0
+  index: -1
+Hamster/3/Leg-B
+  rotate: false
+  xy: 363, 92
+  size: 129, 103
+  orig: 129, 103
+  offset: 0, 0
+  index: -1
+Hamster/3/Leg-F
+  rotate: true
+  xy: 1043, 571
+  size: 118, 96
+  orig: 118, 96
+  offset: 0, 0
+  index: -1
+Hamster/3/Spin
+  rotate: true
+  xy: 492, 668
+  size: 353, 315
+  orig: 353, 315
+  offset: 0, 0
+  index: -1
 Hiding/Arm-L
   rotate: true
-  xy: 555, 10
+  xy: 2052, 339
   size: 60, 59
   orig: 60, 59
   offset: 0, 0
   index: -1
 Hiding/Arm-R
   rotate: true
-  xy: 616, 11
+  xy: 2104, 420
   size: 59, 58
   orig: 59, 58
   offset: 0, 0
   index: -1
 Hiding/Base
   rotate: false
-  xy: 159, 218
+  xy: 1472, 4
   size: 268, 291
   orig: 268, 291
   offset: 0, 0
   index: -1
 Hiding/Eyes
-  rotate: true
-  xy: 986, 423
+  rotate: false
+  xy: 1838, 331
   size: 86, 36
   orig: 86, 36
   offset: 0, 0
   index: -1
 Hiding/Mouth1
-  rotate: false
-  xy: 986, 257
+  rotate: true
+  xy: 940, 3
   size: 33, 26
   orig: 33, 26
   offset: 0, 0
   index: -1
 Hiding/Mouth2
-  rotate: false
-  xy: 270, 2
+  rotate: true
+  xy: 809, 668
   size: 21, 24
   orig: 21, 24
   offset: 0, 0
   index: -1
 Hiding/Nose
-  rotate: false
-  xy: 293, 3
+  rotate: true
+  xy: 968, 7
   size: 29, 23
   orig: 29, 23
   offset: 0, 0
   index: -1
 Hiding/Panting
-  rotate: false
-  xy: 515, 99
+  rotate: true
+  xy: 251, 3
   size: 83, 55
   orig: 83, 55
   offset: 0, 0
   index: -1
 Leg-B
-  rotate: true
-  xy: 163, 17
+  rotate: false
+  xy: 335, 552
   size: 131, 105
   orig: 131, 105
   offset: 0, 0
   index: -1
 Leg-F
-  rotate: true
-  xy: 270, 28
+  rotate: false
+  xy: 599, 568
   size: 120, 98
   orig: 120, 98
   offset: 0, 0
   index: -1
 Mouse
-  rotate: true
-  xy: 986, 204
+  rotate: false
+  xy: 993, 9
   size: 51, 27
   orig: 51, 27
   offset: 0, 0
   index: -1
 Nose
   rotate: false
-  xy: 986, 385
+  xy: 1098, 2
   size: 36, 36
   orig: 36, 36
   offset: 0, 0
   index: -1
+Spin 1
+  rotate: true
+  xy: 680, 213
+  size: 353, 315
+  orig: 353, 315
+  offset: 0, 0
+  index: -1
 Sweat-1
   rotate: false
-  xy: 450, 75
+  xy: 1973, 400
   size: 63, 79
   orig: 63, 79
   offset: 0, 0
   index: -1
 Sweat-2
   rotate: false
-  xy: 370, 75
+  xy: 1054, 40
   size: 78, 74
   orig: 78, 74
   offset: 0, 0
   index: -1
 Whisker
-  rotate: true
-  xy: 962, 31
+  rotate: false
+  xy: 1284, 245
   size: 39, 50
   orig: 39, 50
   offset: 0, 0
   index: -1
-Win/Arm-L
-  rotate: true
-  xy: 905, 14
-  size: 56, 55
-  orig: 56, 55
+Win/Arm
+  rotate: false
+  xy: 1707, 641
+  size: 145, 90
+  orig: 145, 90
   offset: 0, 0
   index: -1
-Win/Arm-R
+Win/Chew
   rotate: false
-  xy: 847, 13
-  size: 56, 57
-  orig: 56, 57
+  xy: 1236, 598
+  size: 93, 97
+  orig: 93, 97
+  offset: 0, 0
+  index: -1
+Win/Jump
+  rotate: false
+  xy: 1459, 605
+  size: 246, 125
+  orig: 246, 125
+  offset: 0, 0
+  index: -1
+Win/Mouth1
+  rotate: false
+  xy: 859, 3
+  size: 48, 33
+  orig: 48, 33
+  offset: 0, 0
+  index: -1
+Win/Mouth2
+  rotate: false
+  xy: 1046, 10
+  size: 50, 26
+  orig: 50, 26
   offset: 0, 0
   index: -1
 Win/Mouth3
+  rotate: false
+  xy: 997, 214
+  size: 50, 25
+  orig: 50, 25
+  offset: 0, 0
+  index: -1
+Win/Smoke 1
   rotate: true
-  xy: 986, 357
-  size: 26, 36
-  orig: 26, 36
+  xy: 1838, 369
+  size: 270, 56
+  orig: 270, 56
+  offset: 0, 0
+  index: -1
+Win/Smoke 2
+  rotate: true
+  xy: 1896, 400
+  size: 239, 75
+  orig: 239, 75
+  offset: 0, 0
+  index: -1
+Win/Smoke 3
+  rotate: true
+  xy: 1149, 12
+  size: 227, 77
+  orig: 227, 77
   offset: 0, 0
   index: -1
 Win/Win
-  rotate: true
-  xy: 696, 72
-  size: 171, 287
-  orig: 171, 287
+  rotate: false
+  xy: 1228, 22
+  size: 242, 217
+  orig: 242, 217
+  offset: 0, 0
+  index: -1
+Win/Win2
+  rotate: false
+  xy: 1973, 481
+  size: 154, 162
+  orig: 154, 162
+  offset: 0, 0
+  index: -1
+Win/Win3
+  rotate: false
+  xy: 692, 10
+  size: 124, 201
+  orig: 124, 201
+  offset: 0, 0
+  index: -1
+Win/Win4
+  rotate: false
+  xy: 818, 38
+  size: 234, 173
+  orig: 234, 173
   offset: 0, 0
   index: -1

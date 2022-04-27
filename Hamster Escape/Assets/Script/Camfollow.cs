@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class Camfollow : MonoBehaviour
 {
    // private Transform player;
@@ -15,10 +15,7 @@ public class Camfollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //if (player == null)
-        //{
-        //    player = GameObject.Find("Cat").GetComponent<Transform>();
-        //}
+       
     }
 
     // Update is called once per frame
@@ -30,5 +27,12 @@ public class Camfollow : MonoBehaviour
     {
         Vector3 newPosition = MovingPlayer.instance.transform.position + target;
         transform.position = transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTime);
+    }
+    private void LateUpdate()
+    {
+        if (MovingPlayer.instance.win && target.x <2)
+        {
+            target.x += 0.01f;
+        }
     }
 }
